@@ -1,22 +1,22 @@
 <div class="row-menu">
-    <ui5-select class="lst-puestos" #selectPuesto (change)="handlePuestoSelChange($event)">
-        <ng-container *ngFor="let puesto of puestos">
-            <ui5-option [selected]="puesto.principal" value="{{puesto.puestoId}}">{{puesto.nombre}} ({{puesto.puestoTitulo}})</ui5-option>
-        </ng-container>                    
-    </ui5-select>
-    <ui5-select class="lst-tableros" #selectTablero (change)="handleTableroSelChange($event)">
-        <ng-container *ngFor="let tablero of puestoTableros">
-            <ng-container *ngIf="tablero.borrado !== true">
-            <ui5-option [selected]="tablero.principal" value="{{tablero.tableroId}}">{{tablero.tableroNombre}}</ui5-option>
-            </ng-container>
-        </ng-container>
-    </ui5-select>
-    <span> | </span>
-    <ui5-button (click)="handleTareaAdd()"  >+ Tarea</ui5-button>
-    <ui5-button icon="sap-icon://refresh" (click)="loadTareasData()"  class="button-refresh"></ui5-button>
-    <aside>
-        <ui5-dialog #dialogTareaAdd header-text="Crear tarea" >
-            <app-tarea-reg [tarea]="oTareaCreate" (cerrar)="handleCloseTareaReg($event)"></app-tarea-reg>
-        </ui5-dialog>
-    </aside>    
+  <ui5-select class="lst-puestos" #selectPuesto (change)="handlePuestoSelChange($event)">
+    @for (puesto of puestos; track puesto) {
+      <ui5-option [selected]="puesto.principal" value="{{puesto.puestoId}}">{{puesto.nombre}} ({{puesto.puestoTitulo}})</ui5-option>
+    }
+  </ui5-select>
+  <ui5-select class="lst-tableros" #selectTablero (change)="handleTableroSelChange($event)">
+    @for (tablero of puestoTableros; track tablero) {
+      @if (tablero.borrado !== true) {
+        <ui5-option [selected]="tablero.principal" value="{{tablero.tableroId}}">{{tablero.tableroNombre}}</ui5-option>
+      }
+    }
+  </ui5-select>
+  <span> | </span>
+  <ui5-button (click)="handleTareaAdd()"  >+ Tarea</ui5-button>
+  <ui5-button icon="sap-icon://refresh" (click)="loadTareasData()"  class="button-refresh"></ui5-button>
+  <aside>
+    <ui5-dialog #dialogTareaAdd header-text="Crear tarea" >
+      <app-tarea-reg [tarea]="oTareaCreate" (cerrar)="handleCloseTareaReg($event)"></app-tarea-reg>
+    </ui5-dialog>
+  </aside>
 </div>

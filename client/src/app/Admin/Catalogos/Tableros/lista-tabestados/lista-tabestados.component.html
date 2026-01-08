@@ -1,91 +1,91 @@
 <div class="container">
-   <div class="row-menu" style="display: flex; align-items: center;">
-        <ui5-button class="btn-add-estado" (click)="handleAddEstado()">+ Estado</ui5-button>
-        <span style="flex-grow: 1; text-align: center; font-size: var(--sapFontHeader3Size);">Estados del tablero {{tablero.id}} {{tablero.nombre}}</span>
-    </div>
-    <div style="height: 200px; overflow: scroll;">
-        <ui5-table growing="Scroll" busy-delay="0" sticky-column-header>
-            <ui5-table-column slot="columns">
-                <span>Id</span>
-            </ui5-table-column>
-            <ui5-table-column slot="columns">
-                <span>Estado</span>
-            </ui5-table-column>
-            <ui5-table-column slot="columns">
-                <span>Posicion</span>
-            </ui5-table-column>
-            <ui5-table-column slot="columns">
-                <span>PoolAsignación</span>
-            </ui5-table-column>
-            <ui5-table-column slot="columns">
-                <span>PoolAsig Tablero</span>
-            </ui5-table-column>
-            <ui5-table-column slot="columns">
-                <span>PoolAsig Estado</span>
-            </ui5-table-column>
-            <ui5-table-column slot="columns">
-                <span>AsigAPuesto</span>
-            </ui5-table-column>
-            <ui5-table-column slot="columns">
-                <span>AsigATablero</span>
-            </ui5-table-column>
-            <ui5-table-column slot="columns">
-                <span>AsigAEstado</span>
-            </ui5-table-column>
-            <ui5-table-column slot="columns">
-                <span>Cierra Asignación</span>
-            </ui5-table-column>
-            <ui5-table-column slot="columns">
-                <span>Editar</span>
-            </ui5-table-column>
+  <div class="row-menu" style="display: flex; align-items: center;">
+    <ui5-button class="btn-add-estado" (click)="handleAddEstado()">+ Estado</ui5-button>
+    <span style="flex-grow: 1; text-align: center; font-size: var(--sapFontHeader3Size);">Estados del tablero {{tablero.id}} {{tablero.nombre}}</span>
+  </div>
+  <div style="height: 200px; overflow: scroll;">
+    <ui5-table growing="Scroll" busy-delay="0" sticky-column-header>
+      <ui5-table-column slot="columns">
+        <span>Id</span>
+      </ui5-table-column>
+      <ui5-table-column slot="columns">
+        <span>Estado</span>
+      </ui5-table-column>
+      <ui5-table-column slot="columns">
+        <span>Posicion</span>
+      </ui5-table-column>
+      <ui5-table-column slot="columns">
+        <span>PoolAsignación</span>
+      </ui5-table-column>
+      <ui5-table-column slot="columns">
+        <span>PoolAsig Tablero</span>
+      </ui5-table-column>
+      <ui5-table-column slot="columns">
+        <span>PoolAsig Estado</span>
+      </ui5-table-column>
+      <ui5-table-column slot="columns">
+        <span>AsigAPuesto</span>
+      </ui5-table-column>
+      <ui5-table-column slot="columns">
+        <span>AsigATablero</span>
+      </ui5-table-column>
+      <ui5-table-column slot="columns">
+        <span>AsigAEstado</span>
+      </ui5-table-column>
+      <ui5-table-column slot="columns">
+        <span>Cierra Asignación</span>
+      </ui5-table-column>
+      <ui5-table-column slot="columns">
+        <span>Editar</span>
+      </ui5-table-column>
 
-            <ng-container *ngFor="let estado of tabEstados">
-                <ui5-table-row>
-                    <ui5-table-cell>
-                        <span>{{estado.id}}</span>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <span>{{estado.estado}}</span>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <span>{{estado.posicion}}</span>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <span>{{estado.poolAsig}}</span>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <span>{{estado.poolAsigTab}}</span>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <span>{{estado.poolAsigEdo}}</span>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <span>{{estado.asigAPuesto}}</span>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <span>{{estado.asigATab}}</span>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <span>{{estado.asigAEdo}}</span>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <span><ui5-checkbox disabled [checked]="estado.cierraAsig"></ui5-checkbox></span>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <span><ui5-button icon="sap-icon://edit" (click)="handleEdit($event,estado.id)"></ui5-button></span>
-                    </ui5-table-cell>
-                </ui5-table-row>
-            </ng-container>
-        </ui5-table>
-    </div>
-    <aside>
-        <ui5-dialog #dialogAddEstado header-text="Agregar estado" >
-            <app-estado-add [tablero]="tablero" (cerrar)="handleCloseAdd($event)"></app-estado-add>
-        </ui5-dialog>
-    </aside>
-    <aside>
-        <ui5-dialog #dialogEditEstado header-text="Editar estado" >
-            <app-tabestado-edit [tabEstado]="tabEstadoEdit" (cerrar)="handleCloseEdit($event)"></app-tabestado-edit>
-        </ui5-dialog>
-    </aside>
-</div>       
+      @for (estado of tabEstados; track estado) {
+        <ui5-table-row>
+          <ui5-table-cell>
+            <span>{{estado.id}}</span>
+          </ui5-table-cell>
+          <ui5-table-cell>
+            <span>{{estado.estado}}</span>
+          </ui5-table-cell>
+          <ui5-table-cell>
+            <span>{{estado.posicion}}</span>
+          </ui5-table-cell>
+          <ui5-table-cell>
+            <span>{{estado.poolAsig}}</span>
+          </ui5-table-cell>
+          <ui5-table-cell>
+            <span>{{estado.poolAsigTab}}</span>
+          </ui5-table-cell>
+          <ui5-table-cell>
+            <span>{{estado.poolAsigEdo}}</span>
+          </ui5-table-cell>
+          <ui5-table-cell>
+            <span>{{estado.asigAPuesto}}</span>
+          </ui5-table-cell>
+          <ui5-table-cell>
+            <span>{{estado.asigATab}}</span>
+          </ui5-table-cell>
+          <ui5-table-cell>
+            <span>{{estado.asigAEdo}}</span>
+          </ui5-table-cell>
+          <ui5-table-cell>
+            <span><ui5-checkbox disabled [checked]="estado.cierraAsig"></ui5-checkbox></span>
+          </ui5-table-cell>
+          <ui5-table-cell>
+            <span><ui5-button icon="sap-icon://edit" (click)="handleEdit($event,estado.id)"></ui5-button></span>
+          </ui5-table-cell>
+        </ui5-table-row>
+      }
+    </ui5-table>
+  </div>
+  <aside>
+    <ui5-dialog #dialogAddEstado header-text="Agregar estado" >
+      <app-estado-add [tablero]="tablero" (cerrar)="handleCloseAdd($event)"></app-estado-add>
+    </ui5-dialog>
+  </aside>
+  <aside>
+    <ui5-dialog #dialogEditEstado header-text="Editar estado" >
+      <app-tabestado-edit [tabEstado]="tabEstadoEdit" (cerrar)="handleCloseEdit($event)"></app-tabestado-edit>
+    </ui5-dialog>
+  </aside>
+</div>

@@ -1,54 +1,56 @@
 <ui5-bar slot="header" design="Header">
-    <ui5-title level="H5" slot="startContent">Cambiar contraseña</ui5-title>
-    <ui5-button class="dialogCloser" design="Transparent" id="closeDialogButton" slot="endContent"
-        icon="decline" (click)="close()"></ui5-button>
+  <ui5-title level="H5" slot="startContent">Cambiar contraseña</ui5-title>
+  <ui5-button class="dialogCloser" design="Transparent" id="closeDialogButton" slot="endContent"
+  icon="decline" (click)="close()"></ui5-button>
 </ui5-bar>
-<div class="container">    
-    <div class="row-blank"></div>
-    <div class="row-password">
-        <div class="password-lbl">
-            <ui5-label for="miContraseña" show-colon class="margin_around">Contraseña</ui5-label>   
-        </div>
-        <div class="password-txt">
-            <ui5-input class="password-txt-input" #dialogPasswInput placeholder="" id="txt-contraseña" type="Password" valueStateMessage="Debe ingresar">
-                <div slot="valueStateMessage">{{passwordErrMsg}}</div>
-            </ui5-input> 
-        </div>
+<div class="container">
+  <div class="row-blank"></div>
+  <div class="row-password">
+    <div class="password-lbl">
+      <ui5-label for="miContraseña" show-colon class="margin_around">Contraseña</ui5-label>
     </div>
-    <div class="row-password">
-        <div class="password-lbl">
-            <ui5-label for="miContraseña" show-colon class="margin_around">Nueva</ui5-label>   
-        </div>
-        <div class="password-txt">
-            <ui5-input class="password-txt-input" #dialogPasswNewInput placeholder="" id="txt-contraseña" type="Password">
-                <div slot="valueStateMessage">{{passwordNewErrMsg}}</div>               
-            </ui5-input> 
-        </div>
+    <div class="password-txt">
+      <ui5-input class="password-txt-input" #dialogPasswInput placeholder="" id="txt-contraseña" type="Password" valueStateMessage="Debe ingresar">
+        <div slot="valueStateMessage">{{passwordErrMsg}}</div>
+      </ui5-input>
     </div>
-    <div class="row-password">
-        <div class="password-lbl">
-            <ui5-label for="miContraseña" show-colon class="margin_around">Confirmar</ui5-label>   
-        </div>
-        <div class="password-txt">
-            <ui5-input class="password-txt-input" #dialogPasswNewConfInput placeholder="" id="txt-contraseña" type="Password">
-                <div slot="valueStateMessage">{{passwordNewConfErrMsg}}</div>
-            </ui5-input> 
-        </div>
+  </div>
+  <div class="row-password">
+    <div class="password-lbl">
+      <ui5-label for="miContraseña" show-colon class="margin_around">Nueva</ui5-label>
     </div>
-    <div class="row-blank"></div>
-    <div class="row-btn-login">
-        <div class="btn-login"></div>
-        <div class="btn-login">
-            <ui5-button (click)="cambiarPasword()" design="Emphasized" class="add-todo-element-width">Aceptar</ui5-button>
-        </div>
+    <div class="password-txt">
+      <ui5-input class="password-txt-input" #dialogPasswNewInput placeholder="" id="txt-contraseña" type="Password">
+        <div slot="valueStateMessage">{{passwordNewErrMsg}}</div>
+      </ui5-input>
     </div>
-    <div class="row-blank"></div>
-    <div class="row-messages" *ngIf="(message.text)">
-        <div class="msg-text">
-            <ui5-message-strip (close)="closeAppMessage()" #ui_message design={{message.displayStyle}} hide-icon>{{message.text}}</ui5-message-strip>
-        </div>
-        <div class="msg-info-btn">
-            <ui5-button icon="sap-icon://information" design="Transparent"></ui5-button>
-        </div>
+  </div>
+  <div class="row-password">
+    <div class="password-lbl">
+      <ui5-label for="miContraseña" show-colon class="margin_around">Confirmar</ui5-label>
     </div>
+    <div class="password-txt">
+      <ui5-input class="password-txt-input" #dialogPasswNewConfInput placeholder="" id="txt-contraseña" type="Password">
+        <div slot="valueStateMessage">{{passwordNewConfErrMsg}}</div>
+      </ui5-input>
+    </div>
+  </div>
+  <div class="row-blank"></div>
+  <div class="row-btn-login">
+    <div class="btn-login"></div>
+    <div class="btn-login">
+      <ui5-button (click)="cambiarPasword()" design="Emphasized" class="add-todo-element-width">Aceptar</ui5-button>
+    </div>
+  </div>
+  <div class="row-blank"></div>
+  @if ((message.text)) {
+    <div class="row-messages">
+      <div class="msg-text">
+        <ui5-message-strip (close)="closeAppMessage()" #ui_message design={{message.displayStyle}} hide-icon>{{message.text}}</ui5-message-strip>
+      </div>
+      <div class="msg-info-btn">
+        <ui5-button icon="sap-icon://information" design="Transparent"></ui5-button>
+      </div>
+    </div>
+  }
 </div>

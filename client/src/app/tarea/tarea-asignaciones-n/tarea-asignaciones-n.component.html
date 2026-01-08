@@ -1,43 +1,45 @@
 <ui5-bar slot="header" design="Header">
-    <ui5-title level="H5" slot="startContent">Asignaciones de {{ tarea.numero}}</ui5-title>
-    <ui5-button class="dialogCloser" design="Transparent" id="closeDialogButton" slot="endContent"
-        icon="decline" (click)="close()"></ui5-button>
+  <ui5-title level="H5" slot="startContent">Asignaciones de {{ tarea.numero}}</ui5-title>
+  <ui5-button class="dialogCloser" design="Transparent" id="closeDialogButton" slot="endContent"
+  icon="decline" (click)="close()"></ui5-button>
 </ui5-bar>
 
 <div>
-            <ui5-table growing="Scroll" busy-delay="0" sticky-column-header>
-                <ui5-table-column slot="columns">
-                    <span>Asignación</span>
-                </ui5-table-column>
-                <ui5-table-column slot="columns">
-                    <span>Fe.Asig.</span>
-                </ui5-table-column>
-                <ui5-table-column slot="columns">
-                    <span>Prioridad</span>
-                </ui5-table-column>
-                <ui5-table-column slot="columns">
-                    <span>Avance</span>
-                </ui5-table-column>
-                <ng-container *ngFor="let asignacion  of asignaciones">
-                    <ui5-table-row>
-                        <ui5-table-cell>
-                            <span>{{asignacion.nombreUsuario}}</span>
-                            <br>
-                            <span class="asig-a-puesto">{{asignacion.puestoTitulo}}</span>
-                        </ui5-table-cell>
-                        <ui5-table-cell>
-                            <span>{{asignacion.creadoFe | date: 'dd-MM-yyyy hh:mm:ss'}}</span>
-                        </ui5-table-cell>
-                        <ui5-table-cell>
-                            <span>{{asignacion.prioridad}}</span>
-                        </ui5-table-cell>
-                        <ui5-table-cell>
-                            <span><ui5-progress-indicator [value]="asignacion.avance" *ngIf="!asignacion.puestoEsPool"></ui5-progress-indicator></span>
-                        </ui5-table-cell>
-                    </ui5-table-row>    
-                </ng-container>
-            </ui5-table>  
-</div>
-<div class="dialog-footer" slot="footer">
+  <ui5-table growing="Scroll" busy-delay="0" sticky-column-header>
+    <ui5-table-column slot="columns">
+      <span>Asignación</span>
+    </ui5-table-column>
+    <ui5-table-column slot="columns">
+      <span>Fe.Asig.</span>
+    </ui5-table-column>
+    <ui5-table-column slot="columns">
+      <span>Prioridad</span>
+    </ui5-table-column>
+    <ui5-table-column slot="columns">
+      <span>Avance</span>
+    </ui5-table-column>
+    @for (asignacion  of asignaciones; track asignacion ) {
+      <ui5-table-row>
+        <ui5-table-cell>
+          <span>{{asignacion.nombreUsuario}}</span>
+          <br>
+            <span class="asig-a-puesto">{{asignacion.puestoTitulo}}</span>
+          </ui5-table-cell>
+          <ui5-table-cell>
+            <span>{{asignacion.creadoFe | date: 'dd-MM-yyyy hh:mm:ss'}}</span>
+          </ui5-table-cell>
+          <ui5-table-cell>
+            <span>{{asignacion.prioridad}}</span>
+          </ui5-table-cell>
+          <ui5-table-cell>
+            <span>@if (!asignacion.puestoEsPool) {
+              <ui5-progress-indicator [value]="asignacion.avance"></ui5-progress-indicator>
+            }</span>
+          </ui5-table-cell>
+        </ui5-table-row>
+      }
+    </ui5-table>
+  </div>
+  <div class="dialog-footer" slot="footer">
     <ui5-button design="Transparent" class="dialog-footer-btn--cancel" (click)="close()">Cerrar</ui5-button>
-</div>
+  </div>

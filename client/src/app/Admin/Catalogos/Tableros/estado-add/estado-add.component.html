@@ -1,35 +1,41 @@
 <div class="container">
-    <div class="dialog-content">
-        <div class="row">
-            <ui5-label class="lbl">Estado:</ui5-label>
-            <ui5-select class="input" #oDialogEstadoInput>
-                <ui5-option *ngFor="let estado of estados" value="{{estado.id}}">{{estado.estado}}</ui5-option>
-            </ui5-select>
-            <ui5-button class="add-button" (click)="handleCrearEstado()"  >+</ui5-button>
-        </div>
-        <div class="row">
-            <ui5-label class="lbl">Posición:</ui5-label>
-            <ui5-select class="input" #oDialogPosicionInput>
-                <ui5-option *ngFor="let pos of posiciones" value="{{pos}}">{{pos}}</ui5-option>
-            </ui5-select>
-        </div>        
+  <div class="dialog-content">
+    <div class="row">
+      <ui5-label class="lbl">Estado:</ui5-label>
+      <ui5-select class="input" #oDialogEstadoInput>
+        @for (estado of estados; track estado) {
+          <ui5-option value="{{estado.id}}">{{estado.estado}}</ui5-option>
+        }
+      </ui5-select>
+      <ui5-button class="add-button" (click)="handleCrearEstado()"  >+</ui5-button>
     </div>
-    <div class="dialog-footer">
-        <ui5-button design="Transparent" class="dialog-footer-btn--cancel" (click)="close()">Cancelar</ui5-button>
-        <ui5-button design="Emphasized" class="dialog-footer-btn--save" (click)="guardar()">Guardar</ui5-button>
+    <div class="row">
+      <ui5-label class="lbl">Posición:</ui5-label>
+      <ui5-select class="input" #oDialogPosicionInput>
+        @for (pos of posiciones; track pos) {
+          <ui5-option value="{{pos}}">{{pos}}</ui5-option>
+        }
+      </ui5-select>
     </div>
-    <div class="row-blank"></div>
-    <div class="row-messages" *ngIf="(message.text)">
-        <div class="msg-text">
-            <ui5-message-strip (close)="closeAppMessage()" #ui_message design={{message.displayStyle}} hide-icon>{{message.text}}</ui5-message-strip>
-        </div>
-        <div class="msg-info-btn">
-            <ui5-button icon="sap-icon://information" design="Transparent"></ui5-button>
-        </div>
+  </div>
+  <div class="dialog-footer">
+    <ui5-button design="Transparent" class="dialog-footer-btn--cancel" (click)="close()">Cancelar</ui5-button>
+    <ui5-button design="Emphasized" class="dialog-footer-btn--save" (click)="guardar()">Guardar</ui5-button>
+  </div>
+  <div class="row-blank"></div>
+  @if ((message.text)) {
+    <div class="row-messages">
+      <div class="msg-text">
+        <ui5-message-strip (close)="closeAppMessage()" #ui_message design={{message.displayStyle}} hide-icon>{{message.text}}</ui5-message-strip>
+      </div>
+      <div class="msg-info-btn">
+        <ui5-button icon="sap-icon://information" design="Transparent"></ui5-button>
+      </div>
     </div>
-    <aside>
-        <ui5-dialog #dialogCreateEstado header-text="Crear estado" >
-            <app-estado-create (cerrar)="handleCloseCreateEstado($event)"></app-estado-create>
-        </ui5-dialog>
-    </aside>    
+  }
+  <aside>
+    <ui5-dialog #dialogCreateEstado header-text="Crear estado" >
+      <app-estado-create (cerrar)="handleCloseCreateEstado($event)"></app-estado-create>
+    </ui5-dialog>
+  </aside>
 </div>

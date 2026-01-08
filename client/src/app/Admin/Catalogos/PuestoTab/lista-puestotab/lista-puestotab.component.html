@@ -1,55 +1,55 @@
 <div class="container">
-   <div class="row-menu" style="display: flex; align-items: center;">
-        <ui5-button class="btn-add-tablero" (click)="handleAdd()">+ Tablero</ui5-button>
-        <span style="flex-grow: 1; text-align: center; font-size: var(--sapFontHeader3Size);">Tableros del puesto {{puesto.id}} {{puesto.titulo}}</span>
-    </div>
-    <div style="height: 200px; overflow: scroll;">
-        <ui5-table growing="Scroll" busy-delay="0" sticky-column-header>
-            <ui5-table-column slot="columns">
-                <span>Id</span>
-            </ui5-table-column>
-            <ui5-table-column slot="columns">
-                <span>Tablero</span>
-            </ui5-table-column>
-            <ui5-table-column slot="columns">
-                <span>Principal</span>
-            </ui5-table-column>
-            <ui5-table-column slot="columns">
-                <span>Borrado</span>
-            </ui5-table-column>
-            <ui5-table-column slot="columns">
-                <span>Editar</span>
-            </ui5-table-column>
+  <div class="row-menu" style="display: flex; align-items: center;">
+    <ui5-button class="btn-add-tablero" (click)="handleAdd()">+ Tablero</ui5-button>
+    <span style="flex-grow: 1; text-align: center; font-size: var(--sapFontHeader3Size);">Tableros del puesto {{puesto.id}} {{puesto.titulo}}</span>
+  </div>
+  <div style="height: 200px; overflow: scroll;">
+    <ui5-table growing="Scroll" busy-delay="0" sticky-column-header>
+      <ui5-table-column slot="columns">
+        <span>Id</span>
+      </ui5-table-column>
+      <ui5-table-column slot="columns">
+        <span>Tablero</span>
+      </ui5-table-column>
+      <ui5-table-column slot="columns">
+        <span>Principal</span>
+      </ui5-table-column>
+      <ui5-table-column slot="columns">
+        <span>Borrado</span>
+      </ui5-table-column>
+      <ui5-table-column slot="columns">
+        <span>Editar</span>
+      </ui5-table-column>
 
-            <ng-container *ngFor="let puestoTab of puestoTab">
-                <ui5-table-row>
-                    <ui5-table-cell>
-                        <span>{{puestoTab.id}}</span>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <span>{{puestoTab.tableroNombre}}</span>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <span><ui5-checkbox disabled [checked]="puestoTab.principal"></ui5-checkbox></span>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <span><ui5-checkbox disabled [checked]="puestoTab.borrado"></ui5-checkbox></span>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <span><ui5-button icon="sap-icon://edit" (click)="handleEdit($event,puestoTab.id)"></ui5-button></span>
-                    </ui5-table-cell>
-                </ui5-table-row>
-            </ng-container>
-        </ui5-table>
-    </div>
-    <aside>
-        <ui5-dialog #dialogAdd header-text="Agregar Tablero" >
-            <app-puestotab-add [puesto]="puesto" (cerrar)="handleCloseAdd($event)"></app-puestotab-add>
-        </ui5-dialog>
-    </aside>    
-    <aside>
-        <ui5-dialog #dialogEdit header-text="Editar Tablero" >
-            <app-puestotab-edit [puestoTab]="puestoTabEdit" (cerrar)="handleCloseEdit($event)"></app-puestotab-edit>
-        </ui5-dialog>
-    </aside>
-</div>  
+      @for (puestoTab of puestoTab; track puestoTab) {
+        <ui5-table-row>
+          <ui5-table-cell>
+            <span>{{puestoTab.id}}</span>
+          </ui5-table-cell>
+          <ui5-table-cell>
+            <span>{{puestoTab.tableroNombre}}</span>
+          </ui5-table-cell>
+          <ui5-table-cell>
+            <span><ui5-checkbox disabled [checked]="puestoTab.principal"></ui5-checkbox></span>
+          </ui5-table-cell>
+          <ui5-table-cell>
+            <span><ui5-checkbox disabled [checked]="puestoTab.borrado"></ui5-checkbox></span>
+          </ui5-table-cell>
+          <ui5-table-cell>
+            <span><ui5-button icon="sap-icon://edit" (click)="handleEdit($event,puestoTab.id)"></ui5-button></span>
+          </ui5-table-cell>
+        </ui5-table-row>
+      }
+    </ui5-table>
+  </div>
+  <aside>
+    <ui5-dialog #dialogAdd header-text="Agregar Tablero" >
+      <app-puestotab-add [puesto]="puesto" (cerrar)="handleCloseAdd($event)"></app-puestotab-add>
+    </ui5-dialog>
+  </aside>
+  <aside>
+    <ui5-dialog #dialogEdit header-text="Editar Tablero" >
+      <app-puestotab-edit [puestoTab]="puestoTabEdit" (cerrar)="handleCloseEdit($event)"></app-puestotab-edit>
+    </ui5-dialog>
+  </aside>
+</div>

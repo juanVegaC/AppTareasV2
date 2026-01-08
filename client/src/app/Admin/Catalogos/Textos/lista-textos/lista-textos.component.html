@@ -1,70 +1,70 @@
 <div class="container">
-    <div class="row-menu">
-        <ui5-button (click)="handleRegresar()" class="menu-back" >&lt;</ui5-button>
-        <span> | </span>
-        <ui5-button (click)="handleAdd()"  >+ Texto</ui5-button>
-        <ui5-button icon="sap-icon://refresh" (click)="reLoadData()"  class="menu-refresh"></ui5-button>
+  <div class="row-menu">
+    <ui5-button (click)="handleRegresar()" class="menu-back" >&lt;</ui5-button>
+    <span> | </span>
+    <ui5-button (click)="handleAdd()"  >+ Texto</ui5-button>
+    <ui5-button icon="sap-icon://refresh" (click)="reLoadData()"  class="menu-refresh"></ui5-button>
+  </div>
+  <div>
+    <div class="row-busy-ind">
+      <div class="busy-ind">
+        <ui5-busy-indicator #busy_indicator size="Medium"></ui5-busy-indicator>
+      </div>
     </div>
-    <div>
-        <div class="row-busy-ind">
-            <div class="busy-ind">
-                <ui5-busy-indicator #busy_indicator size="Medium"></ui5-busy-indicator>
-            </div>
-        </div>
-    </div>
-    <div style="height: 300px; overflow: scroll;">
-        <ui5-table growing="Scroll" busy-delay="0" sticky-column-header>
-            <ui5-table-column slot="columns">
-                <span>Id</span>
-            </ui5-table-column>
-            <ui5-table-column slot="columns">
-                <span>Texto Id</span>
-            </ui5-table-column>
-            <ui5-table-column slot="columns">
-                <span>Idioma</span>
-            </ui5-table-column>
-            <ui5-table-column slot="columns">
-                <span>Texto</span>
-            </ui5-table-column>
-            <ui5-table-column slot="columns">
-                <span>Borrado</span>
-            </ui5-table-column>
-            <ui5-table-column slot="columns">
-                <span>Editar</span>
-            </ui5-table-column>
+  </div>
+  <div style="height: 300px; overflow: scroll;">
+    <ui5-table growing="Scroll" busy-delay="0" sticky-column-header>
+      <ui5-table-column slot="columns">
+        <span>Id</span>
+      </ui5-table-column>
+      <ui5-table-column slot="columns">
+        <span>Texto Id</span>
+      </ui5-table-column>
+      <ui5-table-column slot="columns">
+        <span>Idioma</span>
+      </ui5-table-column>
+      <ui5-table-column slot="columns">
+        <span>Texto</span>
+      </ui5-table-column>
+      <ui5-table-column slot="columns">
+        <span>Borrado</span>
+      </ui5-table-column>
+      <ui5-table-column slot="columns">
+        <span>Editar</span>
+      </ui5-table-column>
 
-            <ng-container *ngFor="let texto of textos">
-                <ui5-table-row>
-                    <ui5-table-cell>
-                        <span>{{texto.id}}</span>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <span>{{texto.textoId}}</span>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <span>{{texto.idioma}}</span>
-                    </ui5-table-cell>
-                    <ui5-table-cell style="min-width: 20em;">
-                        <span>{{texto.texto}}</span>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <span><ui5-checkbox disabled [checked]="texto.borrado"></ui5-checkbox></span>
-                    </ui5-table-cell>
-                    <ui5-table-cell>
-                        <span><ui5-button icon="sap-icon://edit" (click)="handleEdit($event,texto.id)"></ui5-button></span>
-                    </ui5-table-cell>>
-                </ui5-table-row>    
-            </ng-container>
-        </ui5-table>
-    </div>
-    <aside>
-        <ui5-dialog #dialogAdd header-text="Crear texto" >
-            <app-texto-add [texto]="textoAdd" (cerrar)="handleCloseAdd($event)"></app-texto-add>
-        </ui5-dialog>
-    </aside>
-    <aside>
-        <ui5-dialog #dialogEdit header-text="Editar texto" >
-            <app-texto-edit [texto]="textoEdit" (cerrar)="handleCloseEdit($event)"></app-texto-edit>
-        </ui5-dialog>
-    </aside>
+      @for (texto of textos; track texto) {
+        <ui5-table-row>
+          <ui5-table-cell>
+            <span>{{texto.id}}</span>
+          </ui5-table-cell>
+          <ui5-table-cell>
+            <span>{{texto.textoId}}</span>
+          </ui5-table-cell>
+          <ui5-table-cell>
+            <span>{{texto.idioma}}</span>
+          </ui5-table-cell>
+          <ui5-table-cell style="min-width: 20em;">
+            <span>{{texto.texto}}</span>
+          </ui5-table-cell>
+          <ui5-table-cell>
+            <span><ui5-checkbox disabled [checked]="texto.borrado"></ui5-checkbox></span>
+          </ui5-table-cell>
+          <ui5-table-cell>
+            <span><ui5-button icon="sap-icon://edit" (click)="handleEdit($event,texto.id)"></ui5-button></span>
+          </ui5-table-cell>>
+        </ui5-table-row>
+      }
+    </ui5-table>
+  </div>
+  <aside>
+    <ui5-dialog #dialogAdd header-text="Crear texto" >
+      <app-texto-add [texto]="textoAdd" (cerrar)="handleCloseAdd($event)"></app-texto-add>
+    </ui5-dialog>
+  </aside>
+  <aside>
+    <ui5-dialog #dialogEdit header-text="Editar texto" >
+      <app-texto-edit [texto]="textoEdit" (cerrar)="handleCloseEdit($event)"></app-texto-edit>
+    </ui5-dialog>
+  </aside>
 </div>

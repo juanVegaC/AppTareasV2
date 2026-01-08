@@ -1,10 +1,12 @@
-<div class="container">    
-    <div class="row-messages" *ngIf="(messageService.currentMessage$ | async) as message ">
-        <div class="msg-text">
-            <ui5-message-strip (close)="closeAppMessage()" #ui_message design={{message.displayStyle}} hide-icon>{{message.text}}</ui5-message-strip>
-        </div>
-        <div class="msg-info-btn">
-            <ui5-button icon="sap-icon://information" design="Transparent"></ui5-button>
-        </div>
+<div class="container">
+  @if ((messageService.currentMessage$ | async); as message ) {
+    <div class="row-messages">
+      <div class="msg-text">
+        <ui5-message-strip (close)="closeAppMessage()" #ui_message design={{message.displayStyle}} hide-icon>{{message.text}}</ui5-message-strip>
+      </div>
+      <div class="msg-info-btn">
+        <ui5-button icon="sap-icon://information" design="Transparent"></ui5-button>
+      </div>
     </div>
+  }
 </div>

@@ -1,84 +1,98 @@
 <div class="container">
-    <div class="dialog-content">
-        <div class="row">
-            <ui5-label class="lbl">Id:</ui5-label>
-            <ui5-input class="txt" #dialogIdInput maxlength="50" value="{{tabEstado.id}}" disabled="true">
-            </ui5-input>
-        </div>
-        <div class="row">
-            <ui5-label class="lbl">Estado:</ui5-label>
-            <ui5-select class="input" #oDialogEstadoInput>
-                <ng-container *ngFor="let estado of estados">
-                    <ui5-option value="{{estado.id}}" [selected]="estado.id == tabEstado.estadoId">{{estado.estado}}</ui5-option>
-                </ng-container>                 
-            </ui5-select>
-            <ui5-button class="add-button" (click)="handleCrearEstado()"  >+</ui5-button>
-        </div>
-        <div class="row">
-            <ui5-label class="lbl">Posición:</ui5-label>
-            <ui5-select class="input" #oDialogPosicionInput>
-                <ng-container *ngFor="let pos of posiciones">
-                    <ui5-option value="{{pos}}" [selected]="pos == tabEstado.posicion">{{pos}}</ui5-option>
-                </ng-container>
-            </ui5-select>
-        </div>  
-        <div class="row">
-            <ui5-label class="lbl">Pool Asig Puesto:</ui5-label>
-            <ui5-select class="txt" #dialogPuestoIdInput (change)="onPoolAsigPuestoChange($event)">
-                <ui5-option *ngFor="let puesto of catPuestos" value="{{puesto.id}}" [selected]="puesto.id == tabEstado.poolAsigId">{{puesto.titulo}}</ui5-option>
-            </ui5-select>              
-        </div>           
-        <div class="row">
-            <ui5-label class="lbl">Pool Asig Tablero:</ui5-label>
-            <ui5-select class="txt" #dialogTableroInput (change)="onPoolAsigTableroChange($event)">
-                <ui5-option *ngFor="let puestoTab of catPuestoTab" value="{{puestoTab.tableroId}}" [selected]="puestoTab.tableroId == tabEstado.poolAsigTabId">{{puestoTab.tableroNombre}}</ui5-option>
-            </ui5-select>                            
-        </div>        
-        <div class="row">
-            <ui5-label class="lbl">Pool Asig Estado:</ui5-label>
-            <ui5-select class="txt" #dialogEstadoInput>
-                <ui5-option *ngFor="let estado of catTabEstados" value="{{estado.estadoId}}" [selected]="estado.estadoId == tabEstado.poolAsigEdoId">{{estado.estado}}</ui5-option>
-            </ui5-select>                            
-        </div>   
-        <div class="row">
-            <ui5-label class="lbl">Asignar a Puesto:</ui5-label>
-            <ui5-select class="txt" #dialogAsigPuestoIdInput (change)="onAsigAPuestoChange($event)">
-                <ui5-option *ngFor="let puesto of catPuestos" value="{{puesto.id}}" [selected]="puesto.id == tabEstado.asigAPuestoId">{{puesto.titulo}}</ui5-option>
-            </ui5-select>              
-        </div>           
-        <div class="row">
-            <ui5-label class="lbl">Asignar a Tablero:</ui5-label>
-            <ui5-select class="txt" #dialogAsigTableroInput (change)="onAsigATableroChange($event)">
-                <ui5-option *ngFor="let puestoTab of catAsigPuestoTab" value="{{puestoTab.tableroId}}" [selected]="puestoTab.tableroId == tabEstado.asigATabId">{{puestoTab.tableroNombre}}</ui5-option>
-            </ui5-select>                            
-        </div>        
-        <div class="row">
-            <ui5-label class="lbl">Asignar a Estado:</ui5-label>
-            <ui5-select class="txt" #dialogAsigEstadoInput>
-                <ui5-option *ngFor="let estado of catAsigTabEstados" value="{{estado.estadoId}}" [selected]="estado.estadoId == tabEstado.asigAEdoId">{{estado.estado}}</ui5-option>
-            </ui5-select>                            
-        </div>   
-        <div class="row">
-            <ui5-label class="lbl">Cierra Asignación:</ui5-label>
-            <ui5-checkbox class="txt" [checked]="tabEstado.cierraAsig" #dialogCierraAsigInput></ui5-checkbox>   
-        </div> 
-    </div> 
-    <div class="dialog-footer">
-        <ui5-button design="Transparent" class="dialog-footer-btn--cancel" (click)="close()">Cancelar</ui5-button>
-        <ui5-button design="Emphasized" class="dialog-footer-btn--save" (click)="guardar()">Guardar</ui5-button>
+  <div class="dialog-content">
+    <div class="row">
+      <ui5-label class="lbl">Id:</ui5-label>
+      <ui5-input class="txt" #dialogIdInput maxlength="50" value="{{tabEstado.id}}" disabled="true">
+      </ui5-input>
     </div>
-    <div class="row-blank"></div>
-    <div class="row-messages" *ngIf="(message.text)">
-        <div class="msg-text">
-            <ui5-message-strip (close)="closeAppMessage()" #ui_message design={{message.displayStyle}} hide-icon>{{message.text}}</ui5-message-strip>
-        </div>
-        <div class="msg-info-btn">
-            <ui5-button icon="sap-icon://information" design="Transparent"></ui5-button>
-        </div>
+    <div class="row">
+      <ui5-label class="lbl">Estado:</ui5-label>
+      <ui5-select class="input" #oDialogEstadoInput>
+        @for (estado of estados; track estado) {
+          <ui5-option value="{{estado.id}}" [selected]="estado.id == tabEstado.estadoId">{{estado.estado}}</ui5-option>
+        }
+      </ui5-select>
+      <ui5-button class="add-button" (click)="handleCrearEstado()"  >+</ui5-button>
     </div>
-    <aside>
-        <ui5-dialog #dialogCreateEstado header-text="Crear estado" >
-            <app-estado-create (cerrar)="handleCloseCreateEstado($event)"></app-estado-create>
-        </ui5-dialog>
-    </aside>    
+    <div class="row">
+      <ui5-label class="lbl">Posición:</ui5-label>
+      <ui5-select class="input" #oDialogPosicionInput>
+        @for (pos of posiciones; track pos) {
+          <ui5-option value="{{pos}}" [selected]="pos == tabEstado.posicion">{{pos}}</ui5-option>
+        }
+      </ui5-select>
+    </div>
+    <div class="row">
+      <ui5-label class="lbl">Pool Asig Puesto:</ui5-label>
+      <ui5-select class="txt" #dialogPuestoIdInput (change)="onPoolAsigPuestoChange($event)">
+        @for (puesto of catPuestos; track puesto) {
+          <ui5-option value="{{puesto.id}}" [selected]="puesto.id == tabEstado.poolAsigId">{{puesto.titulo}}</ui5-option>
+        }
+      </ui5-select>
+    </div>
+    <div class="row">
+      <ui5-label class="lbl">Pool Asig Tablero:</ui5-label>
+      <ui5-select class="txt" #dialogTableroInput (change)="onPoolAsigTableroChange($event)">
+        @for (puestoTab of catPuestoTab; track puestoTab) {
+          <ui5-option value="{{puestoTab.tableroId}}" [selected]="puestoTab.tableroId == tabEstado.poolAsigTabId">{{puestoTab.tableroNombre}}</ui5-option>
+        }
+      </ui5-select>
+    </div>
+    <div class="row">
+      <ui5-label class="lbl">Pool Asig Estado:</ui5-label>
+      <ui5-select class="txt" #dialogEstadoInput>
+        @for (estado of catTabEstados; track estado) {
+          <ui5-option value="{{estado.estadoId}}" [selected]="estado.estadoId == tabEstado.poolAsigEdoId">{{estado.estado}}</ui5-option>
+        }
+      </ui5-select>
+    </div>
+    <div class="row">
+      <ui5-label class="lbl">Asignar a Puesto:</ui5-label>
+      <ui5-select class="txt" #dialogAsigPuestoIdInput (change)="onAsigAPuestoChange($event)">
+        @for (puesto of catPuestos; track puesto) {
+          <ui5-option value="{{puesto.id}}" [selected]="puesto.id == tabEstado.asigAPuestoId">{{puesto.titulo}}</ui5-option>
+        }
+      </ui5-select>
+    </div>
+    <div class="row">
+      <ui5-label class="lbl">Asignar a Tablero:</ui5-label>
+      <ui5-select class="txt" #dialogAsigTableroInput (change)="onAsigATableroChange($event)">
+        @for (puestoTab of catAsigPuestoTab; track puestoTab) {
+          <ui5-option value="{{puestoTab.tableroId}}" [selected]="puestoTab.tableroId == tabEstado.asigATabId">{{puestoTab.tableroNombre}}</ui5-option>
+        }
+      </ui5-select>
+    </div>
+    <div class="row">
+      <ui5-label class="lbl">Asignar a Estado:</ui5-label>
+      <ui5-select class="txt" #dialogAsigEstadoInput>
+        @for (estado of catAsigTabEstados; track estado) {
+          <ui5-option value="{{estado.estadoId}}" [selected]="estado.estadoId == tabEstado.asigAEdoId">{{estado.estado}}</ui5-option>
+        }
+      </ui5-select>
+    </div>
+    <div class="row">
+      <ui5-label class="lbl">Cierra Asignación:</ui5-label>
+      <ui5-checkbox class="txt" [checked]="tabEstado.cierraAsig" #dialogCierraAsigInput></ui5-checkbox>
+    </div>
+  </div>
+  <div class="dialog-footer">
+    <ui5-button design="Transparent" class="dialog-footer-btn--cancel" (click)="close()">Cancelar</ui5-button>
+    <ui5-button design="Emphasized" class="dialog-footer-btn--save" (click)="guardar()">Guardar</ui5-button>
+  </div>
+  <div class="row-blank"></div>
+  @if ((message.text)) {
+    <div class="row-messages">
+      <div class="msg-text">
+        <ui5-message-strip (close)="closeAppMessage()" #ui_message design={{message.displayStyle}} hide-icon>{{message.text}}</ui5-message-strip>
+      </div>
+      <div class="msg-info-btn">
+        <ui5-button icon="sap-icon://information" design="Transparent"></ui5-button>
+      </div>
+    </div>
+  }
+  <aside>
+    <ui5-dialog #dialogCreateEstado header-text="Crear estado" >
+      <app-estado-create (cerrar)="handleCloseCreateEstado($event)"></app-estado-create>
+    </ui5-dialog>
+  </aside>
 </div>

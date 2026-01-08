@@ -1,53 +1,53 @@
 <div class="dialog-content">
-    <div class="edit-wrapper">
-        <ui5-label class="tarea-numero">{{tarea.numero}}</ui5-label>
-        <br>
+  <div class="edit-wrapper">
+    <ui5-label class="tarea-numero">{{tarea.numero}}</ui5-label>
+    <br>
     </div>
     <div class="edit-wrapper">
-        <ui5-textarea #dialogTareaTextInput class="tarea-texto-textarea" maxlength="500" show-exceeded-text [value]="tarea.texto" readonly></ui5-textarea>
-    </div>    
-<div>
-    <ui5-table growing="Scroll" busy-delay="0" sticky-column-header>
+      <ui5-textarea #dialogTareaTextInput class="tarea-texto-textarea" maxlength="500" show-exceeded-text [value]="tarea.texto" readonly></ui5-textarea>
+    </div>
+    <div>
+      <ui5-table growing="Scroll" busy-delay="0" sticky-column-header>
         <ui5-table-column slot="columns" style="width: 130px;">
-            <span>Fecha de</span>
-            <br>
-            <span>asignación</span> 
-        </ui5-table-column>
-        <ui5-table-column slot="columns" style="width: 130px;">
+          <span>Fecha de</span>
+          <br>
+            <span>asignación</span>
+          </ui5-table-column>
+          <ui5-table-column slot="columns" style="width: 130px;">
             <span>Analista</span>
-        </ui5-table-column>
-        <ui5-table-column slot="columns" style="width: 100px;">
+          </ui5-table-column>
+          <ui5-table-column slot="columns" style="width: 100px;">
             <span>Hrs.</span>
-        </ui5-table-column>
-        <ui5-table-column slot="columns" style="width: 100px;">
+          </ui5-table-column>
+          <ui5-table-column slot="columns" style="width: 100px;">
             <span>Avance</span>
             <br>
-            <span>acumulado</span>            
-        </ui5-table-column>
-        <ng-container *ngFor="let asignacion  of asignaciones">
-            <ui5-table-row>
+              <span>acumulado</span>
+            </ui5-table-column>
+            @for (asignacion  of asignaciones; track asignacion ) {
+              <ui5-table-row>
                 <ui5-table-cell>
-                    <span>{{asignacion.creadoFe| date: 'dd-MM-yyyy'}}</span> 
-                    <br>
-                    <span>{{asignacion.creadoFe| date: 'hh:mm:ss'}}</span> 
+                  <span>{{asignacion.creadoFe| date: 'dd-MM-yyyy'}}</span>
+                  <br>
+                    <span>{{asignacion.creadoFe| date: 'hh:mm:ss'}}</span>
                     <!-- <span>{{actividad.fecha| date: 'dd-MM-yyyy'}}</span> -->
-                </ui5-table-cell>
-                <ui5-table-cell>
-                    <span>{{asignacion.nombreUsuario}}</span>    
-                </ui5-table-cell>
-                <ui5-table-cell>
+                  </ui5-table-cell>
+                  <ui5-table-cell>
+                    <span>{{asignacion.nombreUsuario}}</span>
+                  </ui5-table-cell>
+                  <ui5-table-cell>
                     <span>{{get_tiempo_act(asignacion.tiempoAsig)}}</span>
-                </ui5-table-cell>
-                <ui5-table-cell>
+                  </ui5-table-cell>
+                  <ui5-table-cell>
                     <span><ui5-progress-indicator class="tarea-avance-progress" [value]="asignacion.avance"></ui5-progress-indicator></span>
-                </ui5-table-cell>
-            </ui5-table-row>    
-        </ng-container>
-    </ui5-table>  
-</div>
-   
-</div>
-<div class="dialog-footer">
-    <ui5-button design="Transparent" class="dialog-footer-btn--cancel" (click)="close()">Cerrar</ui5-button>
-</div>
+                  </ui5-table-cell>
+                </ui5-table-row>
+              }
+            </ui5-table>
+          </div>
+
+        </div>
+        <div class="dialog-footer">
+          <ui5-button design="Transparent" class="dialog-footer-btn--cancel" (click)="close()">Cerrar</ui5-button>
+        </div>
 

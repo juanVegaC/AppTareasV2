@@ -1,90 +1,90 @@
-    <div class="dialog-content">
-        <div class="edit-wrapper">
-            <div class="row-tarea-num">
-                <div class="tarea-num-lbl">
-                    <ui5-label >Numero:</ui5-label>
-                </div>
-                <div class="tarea-num">
-                    <ui5-input [value]="actividad.tareaNumero" disabled></ui5-input>    
-                </div>
-            </div>
-        </div>
-        <div class="edit-wrapper">
-            <div class="row-fecha">
-                <div class="fecha-lbl">
-                    <ui5-label>Fecha:</ui5-label>
-                </div>
-                <div class="fecha">
-                    <ui5-date-picker #dialogFechaInput format-pattern="dd/MM/yyyy" [value]="actividad.fechaSTR"></ui5-date-picker>
-                </div>
-            </div>
-        </div>
-        <div class="edit-wrapper">
-            <div class="row-estatus">
-                <div class="estatus-lbl">
-                    <ui5-label>Estatus:</ui5-label>
-                </div>
-                <div class="estatus">
-                    <ui5-select #selectEstatus (change)="EstatusChanged($event)" [disabled]="actividad.tareaPuestoId != accountService.getPuestoId()">
-                        <ui5-option></ui5-option>
-                        <ng-container *ngFor="let estatus of estatus">
-                            <ui5-option value="{{estatus.estatus}}" [selected]="estatus.estatus == actividad.estatus">{{estatus.estatusTxt}}</ui5-option>
-                        </ng-container>                    
-                    </ui5-select>
-                </div>
-            </div>
-        </div> 
-        <div class="edit-wrapper">
-            <div class="row-asignar-a">
-                <div class="asignar-a-lbl">
-                    <ui5-label>Asignada con:</ui5-label>
-                </div>
-                <div class="asignar-a">
-                    <ui5-select #selectReAsignarA (change)="AsignarAChanged($event)" [disabled]="actividad.tareaPuestoId != accountService.getPuestoId()">
-                        <ng-container *ngFor="let puesto of puestosParaTarea">
-                            <ui5-option [selected]="actividad.tareaPuestoId == puesto.puestoId" value="{{puesto.puestoId}}">{{puesto.nombre}} ({{puesto.puestoTitulo}})</ui5-option>
-                        </ng-container>                    
-                    </ui5-select>        
-                </div>
-            </div>
-        </div>        
-        <div class="edit-wrapper">
-            <div class="row-avance">
-                <div class="avance-lbl" title="Avance acumulado">
-                    <ui5-label>Avance(%):</ui5-label>
-                </div>
-                <div class="avance">
-                    <ui5-input #dialogAvanceInput maxlength="3" [value]="actividad.avance"></ui5-input>
-                </div>
-            </div>
-        </div>
-        <div class="edit-wrapper">
-            <div class="row-tiempo">
-                <div class="tiempo-lbl" title="Tiempo asignado">
-                    <ui5-label>Tiempo:</ui5-label>
-                </div>
-                <div class="tiempo">
-                    <ui5-input class="tiempo-hrs" #dialogHrsInput maxlength="2" [value]="actividad.actvHrs"></ui5-input>
-                    <ui5-label>hrs.</ui5-label>
-                    <ui5-input class="tiempo-mins" #dialogMinsInput maxlength="2" [value]="actividad.actvMins"></ui5-input>
-                    <ui5-label>min.</ui5-label>
-                </div>
-            </div>        
-        </div>
-        <div class="edit-wrapper">
-            <div class="row-actividades-lbl">
-                <div class="actividades-lbl">
-                    <ui5-label>Actividades realizadas:</ui5-label>
-                </div>
-            </div>        
-            <div class="row-actividades">
-                <div class="actividades">
-                    <ui5-textarea #dialogTextoInput class="actividad-texto" maxlength="500" show-exceeded-text [value]="actividad.texto"></ui5-textarea>
-                </div>
-            </div>        
-        </div>
+<div class="dialog-content">
+  <div class="edit-wrapper">
+    <div class="row-tarea-num">
+      <div class="tarea-num-lbl">
+        <ui5-label >Numero:</ui5-label>
+      </div>
+      <div class="tarea-num">
+        <ui5-input [value]="actividad.tareaNumero" disabled></ui5-input>
+      </div>
     </div>
-    <div class="dialog-footer">
-        <ui5-button design="Transparent" class="dialog-footer-btn--cancel" (click)="cancelar()">Cancelar</ui5-button>
-        <ui5-button design="Emphasized" class="dialog-footer-btn--save" (click)="guardar()">Guardar</ui5-button>
+  </div>
+  <div class="edit-wrapper">
+    <div class="row-fecha">
+      <div class="fecha-lbl">
+        <ui5-label>Fecha:</ui5-label>
+      </div>
+      <div class="fecha">
+        <ui5-date-picker #dialogFechaInput format-pattern="dd/MM/yyyy" [value]="actividad.fechaSTR"></ui5-date-picker>
+      </div>
     </div>
+  </div>
+  <div class="edit-wrapper">
+    <div class="row-estatus">
+      <div class="estatus-lbl">
+        <ui5-label>Estatus:</ui5-label>
+      </div>
+      <div class="estatus">
+        <ui5-select #selectEstatus (change)="EstatusChanged($event)" [disabled]="actividad.tareaPuestoId != accountService.getPuestoId()">
+          <ui5-option></ui5-option>
+          @for (estatus of estatus; track estatus) {
+            <ui5-option value="{{estatus.estatus}}" [selected]="estatus.estatus == actividad.estatus">{{estatus.estatusTxt}}</ui5-option>
+          }
+        </ui5-select>
+      </div>
+    </div>
+  </div>
+  <div class="edit-wrapper">
+    <div class="row-asignar-a">
+      <div class="asignar-a-lbl">
+        <ui5-label>Asignada con:</ui5-label>
+      </div>
+      <div class="asignar-a">
+        <ui5-select #selectReAsignarA (change)="AsignarAChanged($event)" [disabled]="actividad.tareaPuestoId != accountService.getPuestoId()">
+          @for (puesto of puestosParaTarea; track puesto) {
+            <ui5-option [selected]="actividad.tareaPuestoId == puesto.puestoId" value="{{puesto.puestoId}}">{{puesto.nombre}} ({{puesto.puestoTitulo}})</ui5-option>
+          }
+        </ui5-select>
+      </div>
+    </div>
+  </div>
+  <div class="edit-wrapper">
+    <div class="row-avance">
+      <div class="avance-lbl" title="Avance acumulado">
+        <ui5-label>Avance(%):</ui5-label>
+      </div>
+      <div class="avance">
+        <ui5-input #dialogAvanceInput maxlength="3" [value]="actividad.avance"></ui5-input>
+      </div>
+    </div>
+  </div>
+  <div class="edit-wrapper">
+    <div class="row-tiempo">
+      <div class="tiempo-lbl" title="Tiempo asignado">
+        <ui5-label>Tiempo:</ui5-label>
+      </div>
+      <div class="tiempo">
+        <ui5-input class="tiempo-hrs" #dialogHrsInput maxlength="2" [value]="actividad.actvHrs"></ui5-input>
+        <ui5-label>hrs.</ui5-label>
+        <ui5-input class="tiempo-mins" #dialogMinsInput maxlength="2" [value]="actividad.actvMins"></ui5-input>
+        <ui5-label>min.</ui5-label>
+      </div>
+    </div>
+  </div>
+  <div class="edit-wrapper">
+    <div class="row-actividades-lbl">
+      <div class="actividades-lbl">
+        <ui5-label>Actividades realizadas:</ui5-label>
+      </div>
+    </div>
+    <div class="row-actividades">
+      <div class="actividades">
+        <ui5-textarea #dialogTextoInput class="actividad-texto" maxlength="500" show-exceeded-text [value]="actividad.texto"></ui5-textarea>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="dialog-footer">
+  <ui5-button design="Transparent" class="dialog-footer-btn--cancel" (click)="cancelar()">Cancelar</ui5-button>
+  <ui5-button design="Emphasized" class="dialog-footer-btn--save" (click)="guardar()">Guardar</ui5-button>
+</div>

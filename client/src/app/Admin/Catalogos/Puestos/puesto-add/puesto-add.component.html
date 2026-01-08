@@ -1,34 +1,38 @@
 <div class="container">
-    <div class="dialog-content">
-        <div class="row">
-            <ui5-label class="lbl">Titulo:</ui5-label>
-            <ui5-input class="txt" #dialogTituloInput maxlength="50" value="{{puesto.titulo}}">
-                <div slot="valueStateMessage">{{tituloErrMsg}}</div>
-            </ui5-input>
-        </div>
-        <div class="row">
-            <ui5-label class="lbl">PuestoSupId:</ui5-label>
-            <!-- <ui5-input class="txt" #dialogPuestoSupIdInput maxlength="3" [value]="puesto.puestoSupId"> </ui5-input>-->
-            <ui5-select class="txt" #dialogPuestoSupIdInput>
-                <ui5-option *ngFor="let puesto of catPuestos" value="{{puesto.id}}">{{puesto.titulo}}</ui5-option>
-            </ui5-select>                            
-        </div>
-        <div class="row">
-            <ui5-label class="lbl">esPool:</ui5-label>
-            <ui5-checkbox class="txt" [checked]="puesto.publico" #dialogPublicoInput></ui5-checkbox>
-        </div>
+  <div class="dialog-content">
+    <div class="row">
+      <ui5-label class="lbl">Titulo:</ui5-label>
+      <ui5-input class="txt" #dialogTituloInput maxlength="50" value="{{puesto.titulo}}">
+        <div slot="valueStateMessage">{{tituloErrMsg}}</div>
+      </ui5-input>
     </div>
-    <div class="dialog-footer">
-        <ui5-button design="Transparent" class="dialog-footer-btn--cancel" (click)="close()">Cancelar</ui5-button>
-        <ui5-button design="Emphasized" class="dialog-footer-btn--save" (click)="guardar()">Guardar</ui5-button>
+    <div class="row">
+      <ui5-label class="lbl">PuestoSupId:</ui5-label>
+      <!-- <ui5-input class="txt" #dialogPuestoSupIdInput maxlength="3" [value]="puesto.puestoSupId"> </ui5-input>-->
+      <ui5-select class="txt" #dialogPuestoSupIdInput>
+        @for (puesto of catPuestos; track puesto) {
+          <ui5-option value="{{puesto.id}}">{{puesto.titulo}}</ui5-option>
+        }
+      </ui5-select>
     </div>
-    <div class="row-blank"></div>
-    <div class="row-messages" *ngIf="(message.text)">
-        <div class="msg-text">
-            <ui5-message-strip (close)="closeAppMessage()" #ui_message design={{message.displayStyle}} hide-icon>{{message.text}}</ui5-message-strip>
-        </div>
-        <div class="msg-info-btn">
-            <ui5-button icon="sap-icon://information" design="Transparent"></ui5-button>
-        </div>
+    <div class="row">
+      <ui5-label class="lbl">esPool:</ui5-label>
+      <ui5-checkbox class="txt" [checked]="puesto.publico" #dialogPublicoInput></ui5-checkbox>
     </div>
+  </div>
+  <div class="dialog-footer">
+    <ui5-button design="Transparent" class="dialog-footer-btn--cancel" (click)="close()">Cancelar</ui5-button>
+    <ui5-button design="Emphasized" class="dialog-footer-btn--save" (click)="guardar()">Guardar</ui5-button>
+  </div>
+  <div class="row-blank"></div>
+  @if ((message.text)) {
+    <div class="row-messages">
+      <div class="msg-text">
+        <ui5-message-strip (close)="closeAppMessage()" #ui_message design={{message.displayStyle}} hide-icon>{{message.text}}</ui5-message-strip>
+      </div>
+      <div class="msg-info-btn">
+        <ui5-button icon="sap-icon://information" design="Transparent"></ui5-button>
+      </div>
+    </div>
+  }
 </div>

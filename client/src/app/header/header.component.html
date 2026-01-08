@@ -1,16 +1,20 @@
 <header class="app-header">
   <ui5-shellbar primary-title="App Tareas" (ui5-profile-click)="handleProfileClick($event)" (ui5-logo-click)="handleGoHome()">
-	<ui5-avatar *ngIf="accountService.isLoged()" slot="profile" size="XS" [initials]="accountService.getUserInitial()"></ui5-avatar>
-	<img src="./assets/images/biopappel-logo.png" slot="logo" title="App Tareas" (click)="handleGoHome()">
-	<ui5-shellbar-item icon="palette" text="Temas" ref="themeChangeItem" (click)="handleThemeSettingsToggle($event)"></ui5-shellbar-item>
-    <ui5-shellbar-item *ngIf="accountService.isLoged()" icon="log" (click)="handleLogOut()"></ui5-shellbar-item>
+    @if (accountService.isLoged()) {
+      <ui5-avatar slot="profile" size="XS" [initials]="accountService.getUserInitial()"></ui5-avatar>
+    }
+    <img src="./assets/images/biopappel-logo.png" slot="logo" title="App Tareas" (click)="handleGoHome()">
+    <ui5-shellbar-item icon="palette" text="Temas" ref="themeChangeItem" (click)="handleThemeSettingsToggle($event)"></ui5-shellbar-item>
+    @if (accountService.isLoged()) {
+      <ui5-shellbar-item icon="log" (click)="handleLogOut()"></ui5-shellbar-item>
+    }
   </ui5-shellbar>
 
-  <ui5-popover #themeSettingsPopover 
- 	class="app-bar-theming-popover" 
-	placement-type="Bottom" 
-	horizontal-align="Right" 
-	header-text="Tema">
+  <ui5-popover #themeSettingsPopover
+    class="app-bar-theming-popover"
+    placement-type="Bottom"
+    horizontal-align="Right"
+    header-text="Tema">
     <ui5-list #themeSelect mode="SingleSelect" (selectionChange)="handleThemeChange($event)">
       <ui5-li icon="palette" data-theme="sap_horizon" selected>Blanco</ui5-li>
       <ui5-li icon="palette" data-theme="sap_horizon_dark">Negro</ui5-li>
@@ -28,9 +32,11 @@
 
     <div class="profile-settings-list">
       <ui5-list mode="SingleSelect" separators="None" (item-click)="handleProfileSettingsSelect($event)">
-        <ui5-li icon="settings" *ngIf="accountService.isAdmin()" data-key="settings">Admin</ui5-li>
+        @if (accountService.isAdmin()) {
+          <ui5-li icon="settings" data-key="settings">Admin</ui5-li>
+        }
         <ui5-li icon="private" data-key="password-change">Cambiar contaseña</ui5-li>
-		<ui5-li icon="sys-help" data-key="help">Acerca de...</ui5-li>
+        <ui5-li icon="sys-help" data-key="help">Acerca de...</ui5-li>
       </ui5-list>
     </div>
   </ui5-popover>
@@ -74,15 +80,15 @@
       <ui5-title level="H5">App Tareas</ui5-title>
     </div>
 
-	<p class="help-dialog-text">
-		<b>Fecha</b>: 2025-04-25<br>
-		<b>Versión</b>: 0.1 <br>
-		<b>Autor</b>: JCV<br>
-		<hr />
-	<p>
+    <p class="help-dialog-text">
+      <b>Fecha</b>: 2025-04-25<br>
+      <b>Versión</b>: 0.1 <br>
+      <b>Autor</b>: JCV<br>
+      <hr />
+      <p>
 
-    <div class="dialog-button">
-      <ui5-button design="Emphasized" (click)="handleHelpDialogCloseButtonClick($event)">Cerrar</ui5-button>
-    </div>
-  </ui5-dialog>
-</header>
+        <div class="dialog-button">
+          <ui5-button design="Emphasized" (click)="handleHelpDialogCloseButtonClick($event)">Cerrar</ui5-button>
+        </div>
+      </ui5-dialog>
+    </header>

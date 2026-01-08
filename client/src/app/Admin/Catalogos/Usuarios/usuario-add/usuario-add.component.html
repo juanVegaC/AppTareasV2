@@ -1,36 +1,38 @@
 <div class="container">
-    <div class="dialog-content">
-        <div class="row-username">
-            <ui5-label class="username-lbl">Usuario:</ui5-label>
-            <ui5-input class="username-txt" #dialogUsuarioInput maxlength="15" [value]="usuario.userName">
-                <div slot="valueStateMessage">{{userNameErrMsg}}</div>
-            </ui5-input>
-        </div>
-        <div class="row-name">
-            <ui5-label class="name-lbl">Nombre:</ui5-label>
-            <ui5-input class="name-txt" #dialogNombreInput maxlength="40" [value]="usuario.name">
-                <div slot="valueStateMessage">{{nameErrMsg}}</div>
-            </ui5-input>
-        </div>
-        <div class="row-password">
-            <ui5-label class="password-lbl">Contraseña:</ui5-label>
-            <ui5-input class="password-txt" #dialogPasswordInput maxlength="15" [value]="usuario.password" type="Password">
-                <div slot="valueStateMessage">{{passwordErrMsg}}</div>
-            </ui5-input>
-        </div>
+  <div class="dialog-content">
+    <div class="row-username">
+      <ui5-label class="username-lbl">Usuario:</ui5-label>
+      <ui5-input class="username-txt" #dialogUsuarioInput maxlength="15" [value]="usuario.userName">
+        <div slot="valueStateMessage">{{userNameErrMsg}}</div>
+      </ui5-input>
     </div>
-    <div class="dialog-footer">
-        <ui5-button design="Transparent" class="dialog-footer-btn--cancel" (click)="close()">Cancelar</ui5-button>
-        <ui5-button design="Emphasized" class="dialog-footer-btn--save" (click)="guardar()">Guardar</ui5-button>
+    <div class="row-name">
+      <ui5-label class="name-lbl">Nombre:</ui5-label>
+      <ui5-input class="name-txt" #dialogNombreInput maxlength="40" [value]="usuario.name">
+        <div slot="valueStateMessage">{{nameErrMsg}}</div>
+      </ui5-input>
     </div>
-    <div class="row-blank"></div>
-    <div class="row-messages" *ngIf="(message.text)">
-        <div class="msg-text">
-            <ui5-message-strip (close)="closeAppMessage()" #ui_message design={{message.displayStyle}} hide-icon>{{message.text}}</ui5-message-strip>
-        </div>
-        <div class="msg-info-btn">
-            <ui5-button icon="sap-icon://information" design="Transparent"></ui5-button>
-        </div>
+    <div class="row-password">
+      <ui5-label class="password-lbl">Contraseña:</ui5-label>
+      <ui5-input class="password-txt" #dialogPasswordInput maxlength="15" [value]="usuario.password" type="Password">
+        <div slot="valueStateMessage">{{passwordErrMsg}}</div>
+      </ui5-input>
     </div>
+  </div>
+  <div class="dialog-footer">
+    <ui5-button design="Transparent" class="dialog-footer-btn--cancel" (click)="close()">Cancelar</ui5-button>
+    <ui5-button design="Emphasized" class="dialog-footer-btn--save" (click)="guardar()">Guardar</ui5-button>
+  </div>
+  <div class="row-blank"></div>
+  @if ((message.text)) {
+    <div class="row-messages">
+      <div class="msg-text">
+        <ui5-message-strip (close)="closeAppMessage()" #ui_message design={{message.displayStyle}} hide-icon>{{message.text}}</ui5-message-strip>
+      </div>
+      <div class="msg-info-btn">
+        <ui5-button icon="sap-icon://information" design="Transparent"></ui5-button>
+      </div>
+    </div>
+  }
 </div>
 
