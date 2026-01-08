@@ -1,0 +1,56 @@
+<div class="container">
+    <div class="dialog-content">
+        <div class="row">
+            <ui5-label class="lbl">Id Empleado:</ui5-label>
+            <ui5-input class="txt" #dialogEmpleadoIdInput maxlength="50" value="{{empleado.id}}" disabled="true">
+            </ui5-input>
+        </div>
+        <div class="row">
+            <ui5-label class="lbl">Id Usuario:</ui5-label>
+            <!--<ui5-input class="txt" #dialogUsuarioIdInput maxlength="50" value="{{empleado.userId}}">                
+            </ui5-input>-->
+            <ui5-select class="txt" #dialogUsuarioIdInput>
+                <ui5-option *ngFor="let usuario of catUsuarios" value="{{usuario.id}}" [selected]="usuario.id == empleado.userId">{{usuario.name}}</ui5-option>
+            </ui5-select>               
+        </div>
+        <div class="row">
+            <ui5-label class="lbl">Id Puesto:</ui5-label>
+            <!--<ui5-input class="txt" #dialogPuestoIdInput maxlength="3" value="{{empleado.puestoId}}">
+            </ui5-input>-->
+            <ui5-select class="txt" #dialogPuestoIdInput>
+                <ui5-option *ngFor="let puesto of catPuestos" value="{{puesto.id}}" [selected]="puesto.id == empleado.puestoId">{{puesto.titulo}}</ui5-option>
+            </ui5-select>              
+        </div>
+        <div class="row">
+            <ui5-label class="lbl">esPrincipal:</ui5-label>
+            <ui5-checkbox class="txt" [checked]="empleado.principal" #dialogPrincipalInput></ui5-checkbox>
+        </div>
+        <div class="row">
+            <ui5-label class="lbl">Válido desde:</ui5-label>
+            <ui5-date-picker class="txt" format-pattern="dd/MM/yyyy" min-date="1/1/2020" max-date="31/12/2099" #dialogValidoDesdeInput value="{{empleado.validoDesdeStr}}">
+            </ui5-date-picker>
+        </div>
+        <div class="row">
+            <ui5-label class="lbl">Válido hasta:</ui5-label>
+            <ui5-date-picker class="txt" format-pattern="dd/MM/yyyy" min-date="1/1/2020" max-date="31/12/2099" #dialogValidoHastaInput value="{{empleado.validoHastaStr}}">
+            </ui5-date-picker>
+        </div>
+        <div class="row">
+            <ui5-label class="lbl">Borrado:</ui5-label>
+            <ui5-checkbox class="txt" [checked]="empleado.borrado" #dialogBorradoInput></ui5-checkbox>
+        </div>
+    </div>
+    <div class="dialog-footer">
+        <ui5-button design="Transparent" class="dialog-footer-btn--cancel" (click)="close()">Cancelar</ui5-button>
+        <ui5-button design="Emphasized" class="dialog-footer-btn--save" (click)="guardar()">Guardar</ui5-button>
+    </div>
+    <div class="row-blank"></div>
+    <div class="row-messages" *ngIf="(message.text)">
+        <div class="msg-text">
+            <ui5-message-strip (close)="closeAppMessage()" #ui_message design={{message.displayStyle}} hide-icon>{{message.text}}</ui5-message-strip>
+        </div>
+        <div class="msg-info-btn">
+            <ui5-button icon="sap-icon://information" design="Transparent"></ui5-button>
+        </div>
+    </div>
+</div>

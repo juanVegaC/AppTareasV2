@@ -1,0 +1,22 @@
+.dialog-footer {
+  display: flex;
+  justify-content:  flex-end;
+  align-items: center;
+  gap: 8px;
+}
+
+.dialog-footer-btn--cerrar-asignacion {
+  margin-right: auto;
+}
+
+.dialog-footer-btn--cancel{
+  margin-right: 0;
+}
+
+.actividades-header-title-tarea-numero {
+  color: #1976d2; /* A nice blue, or use your preferred shade */
+}
+
+.actividades-header-title-tarea-texto {
+  color: #1e3853; /* A nice blue, or use your preferred shade */
+}

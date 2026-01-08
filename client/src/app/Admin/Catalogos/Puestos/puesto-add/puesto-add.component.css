@@ -1,0 +1,51 @@
+.dialog-content {
+	max-width: 320px;
+	padding: 1rem;
+}
+
+.dialog-footer {
+	padding: 0.25rem 0.25rem 0 0.25rem;
+	border-top: 1px solid #d9d9d9;
+	display: flex;
+	justify-content: flex-end;
+}
+
+.dialog-footer-btn--cancel {
+	margin-inline-end: 0.25rem;
+}
+
+.row{
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.5rem;
+}
+
+.lbl{
+    text-align: right;
+    width: 100px;
+    padding-right: 1rem;
+}
+
+.txt{
+    flex: 1;
+}
+
+.row-blank{
+    min-height: 1rem;
+}
+
+.row-messages{
+    display: flex;
+}
+
+.msg-text{
+    text-align: center;
+    min-width: 90%;
+    position: absolute;
+    bottom: 0px;
+}
+.msg-info-btn{
+    position: absolute;
+    bottom: 0px;    
+}
+

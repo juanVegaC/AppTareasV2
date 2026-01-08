@@ -1,0 +1,69 @@
+<ui5-bar slot="header" design="Header">
+    <ui5-title level="H5" slot="startContent" >
+        Actividades de <span class="actividades-header-title-tarea-numero">{{oTareaSelected?.numero}}</span>  - <span class="actividades-header-title-tarea-texto">{{getTareaTextPreview(oTareaSelected?.texto)}}</span>
+    </ui5-title>
+    <ui5-button class="dialogCloser" design="Transparent" id="closeDialogButton" slot="endContent"
+        icon="decline" (click)="close()"></ui5-button>
+</ui5-bar>
+<div>
+    <ui5-table growing="Scroll" busy-delay="0" sticky-column-header>
+        <ui5-table-column slot="columns" style="width: 130px;">
+            <span>Fecha</span>
+        </ui5-table-column>
+        <ui5-table-column slot="columns" style="width: 100px;">
+            <span>Hrs.</span>
+        </ui5-table-column>
+        <ui5-table-column slot="columns" style="width: 100px;">
+            <span>Avance</span>
+            <br>
+            <span>acumulado</span>            
+        </ui5-table-column>
+        <ui5-table-column slot="columns">
+            <span>Actividades</span>
+        </ui5-table-column>
+        <ng-container *ngFor="let actividad  of actividades">
+            <ui5-table-row>
+                <ui5-table-cell>
+                    <span>{{actividad.fecha| date: 'dd-MM-yyyy'}}</span>
+                </ui5-table-cell>
+                <ui5-table-cell>
+                    <span>{{get_tiempo_act(actividad)}}</span>
+                </ui5-table-cell>
+                <ui5-table-cell>
+                    <span>{{actividad.avance}} %</span>
+                </ui5-table-cell>
+                <ui5-table-cell>
+                    <span>{{actividad.texto}}</span>
+                </ui5-table-cell>
+            </ui5-table-row>    
+        </ng-container>
+        <ui5-table-row>
+            <ui5-table-cell>
+                <b>Total</b>
+            </ui5-table-cell>
+            <ui5-table-cell>
+                <b>{{get_total_tiempo()}}</b>
+            </ui5-table-cell>
+            <ui5-table-cell>
+                <b>{{get_total_avance()}}</b>
+            </ui5-table-cell>
+            <ui5-table-cell></ui5-table-cell>
+        </ui5-table-row>
+    </ui5-table>  
+</div>
+<div class="dialog-footer" slot="footer">
+    <ui5-button *ngIf="(configView?.showCierraAsigBtn)" design="Negative" class="dialog-footer-btn--cancel" class="dialog-footer-btn--cerrar-asignacion" (click)="HandleAsignacionClose()">Cerrar Asignación</ui5-button>
+    <ui5-button *ngIf="(configView?.showRegAvanceBtn)" design="Emphasized" class="dialog-footer-btn--cancel" (click)="HandleRegistraAvance()">Reg. Avance</ui5-button>
+    <ui5-button design="Transparent" class="dialog-footer-btn--cancel" (click)="close()">Cerrar</ui5-button>
+</div>
+
+<div>
+    <aside>
+        <ui5-dialog #dialogRegAvance header-text="Registar avances">
+            <app-actividad-reg [actividad]="oAvanceCreate" (cerrar)="handleCloseActvReg($event)" >
+
+            </app-actividad-reg>            
+        </ui5-dialog>
+    </aside> 
+</div>
+

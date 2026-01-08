@@ -1,0 +1,11 @@
+<div class="popover-content">
+    <ui5-label class="po-tarea-conf-message-title">{{action.title}}</ui5-label>
+    <br>
+    <hr>
+    <ui5-label class="po-tarea-conf-message-line-1">{{action.text_line1}}</ui5-label>
+</div>
+
+<div slot="footer" class="popover-footer">
+    <ui5-button class="confirm-tarea-accion-btn-Yes" id="closePopoverButtonYes" (click)="confirmAction()" design="Positive" >Si</ui5-button>
+    <ui5-button class= "confirm-tarea-accion-btn-No" id="closePopoverButtonNo" (click)="cancelAction()" design="Attention">No</ui5-button>
+</div>

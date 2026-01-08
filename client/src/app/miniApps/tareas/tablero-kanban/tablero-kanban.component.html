@@ -1,0 +1,62 @@
+
+<div class="container">
+  <div class="kanban-board" cdkDropListGroup>
+    <div *ngFor="let edo of tabTareas" class="kanban-column">
+      <ui5-title level="H3">{{ edo.estado }}</ui5-title>
+      <div class="task-list"
+          cdkDropList
+          [id]="edo.estadoId.toString()"
+          [cdkDropListData]="edo.tareas"
+          [cdkDropListConnectedTo]="columnIds"
+          (cdkDropListDropped)="drop($event)">
+        <ui5-card *ngFor="let tarea of edo.tareas"
+                  cdkDrag
+                  [cdkDragData]="tarea"
+                  class="task-card {{ getTaskPriorityClass(tarea) }}"
+                  [attr.data-priority]="tarea.prioridad !== 0 ? tarea.prioridad : null">
+            <div class="task-card__content">
+              <div class="task-card__header">
+                <span class="task-number" [title]="tarea.numero">#{{ tarea.numero }} </span>            
+                <span class="edo-time" *ngIf="getAdditionalText(tarea)">{{ getAdditionalText(tarea) }}</span>
+              </div>
+              <div class="task-card__header" (click)="fTareaDetalleOpen(tarea)">
+                <span class="task-title" [title]="tarea.texto">{{ getTareaTextPreview(tarea.texto) }}</span>
+                <span *ngIf="edo.poolAsigId == 0 && puestoSelected.esPool " class="task-assignee">{{ tarea.asignadoANombre }}</span>
+              </div>
+              <div class="task-footer" *ngIf="edo.poolAsigId == 0" [title]="getTaskAvance(tarea)" (click)="fTareaRegAvance(tarea)">
+                <span><ui5-progress-indicator class="task-progressbar" [value]="tarea.avance" hide-value></ui5-progress-indicator></span>
+                <span class="task-percent">{{tarea.avance}}%</span>
+                <span class="task-time">{{getTaskTime(tarea)}}</span>
+              </div>
+              <div class="task-footer-oAsig-header" *ngFor="let otraAsig of tarea.otrasAsig"   (click)="fTareaRegAvance(otraAsig)">
+                <div class="task-footer-oAsig" [title]="otraAsig.asignadoANombre + ', ESTADO: ' + otraAsig.estado">
+                  <span class="task-assignee-oAsig">{{ otraAsig.asignadoANombre }} ({{ otraAsig.estado }})</span>
+                </div>
+                <div class="task-footer-oAsig" [title]="getTaskAvance(otraAsig)">
+                  <span>
+                    <ui5-progress-indicator [value]="otraAsig.avance" hide-value></ui5-progress-indicator>
+                  </span>
+                  <span class="task-percent">{{otraAsig.avance}}%</span>
+                  <span class="task-time">{{getTaskTime(otraAsig)}}</span>
+                </div>
+  
+              </div>
+            </div>
+        </ui5-card>
+      </div>
+    </div>
+  </div>
+    <aside>
+        <ui5-dialog #dialogRegAvance header-text="Registar avances">
+            <app-actividad-reg-n [actividad]="oAvanceCreate" (cerrar)="handleCloseActvReg($event)" ></app-actividad-reg-n>
+
+        </ui5-dialog>
+    </aside> 
+    <aside>
+        <ui5-dialog #dialogTareaDetalle header-text="Detalle de tarea">
+            <app-tarea-detalle-home [tarea]="oTareaSelected" (cerrar)="handleCloseTareaDetalle($event)"></app-tarea-detalle-home>
+        </ui5-dialog>
+    </aside> 
+
+</div>
+

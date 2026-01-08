@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="row-menu">
+        <ui5-button (click)="handleRegresar()" class="menu-back" >&lt;</ui5-button>
+        <span> | </span>
+        <ui5-button (click)="handleAdd()"  >+ Usuario</ui5-button>
+        <ui5-button icon="sap-icon://refresh" (click)="reLoadData()"  class="menu-refresh"></ui5-button>
+    </div>
+    <div>
+        <div class="row-busy-ind">
+            <div class="busy-ind">
+                <ui5-busy-indicator #busy_indicator size="Medium"></ui5-busy-indicator>
+            </div>
+        </div>
+    </div>
+    <div style="height: 300px; overflow: scroll;">
+        <ui5-table growing="Scroll" busy-delay="0" sticky-column-header>
+            <ui5-table-column slot="columns">
+                <span>Id</span>
+            </ui5-table-column>
+            <ui5-table-column slot="columns">
+                <span>Usuario</span>
+            </ui5-table-column>
+            <ui5-table-column slot="columns">
+                <span>Nombre</span>
+            </ui5-table-column>
+            <ui5-table-column slot="columns">
+                <span>Admin</span>
+            </ui5-table-column>
+            <ui5-table-column slot="columns">
+                <span>Bloqueado</span>
+            </ui5-table-column>
+            <ui5-table-column slot="columns">
+                <span>Editar</span>
+            </ui5-table-column>
+            <ng-container *ngFor="let usuario of usuarios">
+                <ui5-table-row>
+                    <ui5-table-cell>
+                        <span>{{usuario.id}}</span>
+                    </ui5-table-cell>
+                    <ui5-table-cell>
+                        <span>{{usuario.userName}}</span>
+                    </ui5-table-cell>
+                    <ui5-table-cell>
+                        <span>{{usuario.name}}</span>
+                    </ui5-table-cell>
+                    <ui5-table-cell>
+                        <span><ui5-checkbox disabled [checked]="usuario.admin"></ui5-checkbox></span>
+                    </ui5-table-cell>
+                    <ui5-table-cell>
+                        <span><ui5-checkbox disabled [checked]="usuario.locked"></ui5-checkbox></span>
+                    </ui5-table-cell>
+                    <ui5-table-cell>
+                        <span><ui5-button icon="sap-icon://edit" (click)="handleEdit($event,usuario.id)"></ui5-button></span>
+                    </ui5-table-cell>
+                </ui5-table-row>    
+            </ng-container>
+        </ui5-table>
+    </div>
+    <aside>
+        <ui5-dialog #dialogAdd header-text="Crear usuario" >
+            <app-usuario-add [usuario]="usuarioAdd" (cerrar)="handleCloseAdd($event)"></app-usuario-add>
+        </ui5-dialog>
+    </aside>
+    <aside>
+        <ui5-dialog #dialogEdit header-text="Editar usuario" >
+            <app-usuario-edit [usuario]="usuarioEdit" (cerrar)="handleCloseEdit($event)"></app-usuario-edit>
+        </ui5-dialog>
+    </aside>
+</div>

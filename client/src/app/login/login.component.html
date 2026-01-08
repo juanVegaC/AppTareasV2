@@ -1,0 +1,36 @@
+<div class="container">   
+        <ui5-busy-indicator #busy_indicator></ui5-busy-indicator>
+        <div class="row-blank-2"></div>
+        <div class="row-user">
+            <div class="usr-lbl">
+                <ui5-label for="miUsuario" show-colon>Usuario</ui5-label>
+            </div>
+            <div class="usr-txt">
+                <ui5-input #username_txt placeholder="" class="" id="txt-usuario"></ui5-input>
+            </div>
+        </div>
+        <div class="row-blank"></div>
+        <div class="row-password">
+            <div class="psw-lbl">
+                <ui5-label for="miContraseña" show-colon class="margin_around">Contraseña</ui5-label>   
+            </div>
+            <div class="psw-txt">
+                <ui5-input #password_txt placeholder="" (change)="handleLogin()" id="txt-contraseña" type="Password"></ui5-input> 
+            </div>
+        </div>
+        <div class="row-blank"></div>
+        <div class="row-btn-login">
+            <div class="btn-login"></div>
+            <div class="btn-login">
+                <ui5-button #btn_login (click)="handleLogin()" design="Emphasized" class="add-todo-element-width">Inicar sesion</ui5-button>
+            </div>
+        </div>
+        <div class="row-blank"></div>
+        <div class="row-busy-ind">
+            <div class="busy-ind">
+                <ui5-busy-indicator #busy_indicator2 size="Medium" active>
+                    <br>
+                </ui5-busy-indicator>
+            </div>
+        </div>
+</div>

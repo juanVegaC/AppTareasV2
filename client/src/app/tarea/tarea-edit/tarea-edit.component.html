@@ -1,0 +1,18 @@
+<div class="dialog-content">
+    <div class="edit-wrapper">
+        <ui5-label>Numero:</ui5-label>
+        <ui5-input #dialogTareaNumeroInput maxlength="15" [value]="tarea.numero"></ui5-input>
+    </div>
+    <div class="edit-wrapper">
+        <ui5-label>Url de Documentación:</ui5-label>
+        <ui5-textarea #dialogTareaDocuUrlInput class="tarea-docu-url-textarea" [value]="tarea.docuUrl"></ui5-textarea>
+    </div>    
+    <div class="edit-wrapper">
+        <ui5-label>Descripcion:</ui5-label>
+        <ui5-textarea #dialogTareaTextInput class="tarea-texto-textarea" maxlength="500" show-exceeded-text [value]="tarea.texto"></ui5-textarea>
+    </div>    
+</div>
+<div class="dialog-footer">
+    <ui5-button design="Transparent" class="dialog-footer-btn--cancel" (click)="cancelar()">Cancelar</ui5-button>
+    <ui5-button design="Emphasized" class="dialog-footer-btn--save" (click)="guardar()">Guardar</ui5-button>
+</div>

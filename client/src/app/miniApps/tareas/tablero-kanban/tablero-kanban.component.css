@@ -1,0 +1,258 @@
+.kanban-board {
+  /* Usar Grid para mantener columnas con el mismo ancho en todas las filas */
+  --kanban-min-col: 180px; /* ancho mínimo por columna (ajustable) */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(var(--kanban-min-col), 1fr));
+  gap: 12px;
+  padding: 16px;
+  user-select: none;
+  align-items: start; /* Alinea las columnas en la parte superior */
+}
+
+.kanban-column {
+  /* La columna ocupa el ancho completo de su celda de grid */
+  background-color: #f4f4f4;
+  border-radius: 8px;
+  padding: 8px;
+}
+
+/* Forzar títulos de columna a ocupar exactamente dos líneas para uniformidad */
+.kanban-column ui5-title {
+  display: block;
+  line-height: 1.2;              /* altura de línea base */
+  min-height: 2.4em;              /* 2 líneas */
+  max-height: 2.4em;              /* 2 líneas */
+  overflow: hidden;               /* recorte del exceso */
+  white-space: normal;            /* permitir salto de línea */
+  word-break: break-word;         /* romper palabras largas */
+  hyphens: auto;                  /* guiones automáticos si aplica */
+}
+
+.task-list {
+  min-height: 100px;
+}
+
+.task-card {
+  margin-bottom: 8px;
+  position: relative;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.06);
+}
+
+/* Content wrapper: reserve space to avoid overlap with the right strip */
+.task-card__content {
+  padding-right: 24px; /* igual al ancho de la franja para pegar elementos al strip */
+  container-type: inline-size; /* enable container queries for responsive hiding */
+}
+
+/* Full-height vertical priority strip on the right drawn by the card itself */
+.task-card::after {
+  content: attr(data-priority);
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0; /* full height */
+  width: 24px; /* strip width */
+  display: flex;
+  align-items: center; /* center number vertically */
+  justify-content: center; /* center number horizontally */
+  color: #ffffff;
+  font-weight: 800;
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+/* Colores por prioridad (aplicados solo a la franja) */
+.task-card.tak-priority-normal::after { background-color: #638c9c; color: #ffffff; }
+.task-card.tak-priority-medium::after { background-color: #af9061; color: #ffffff; }
+.task-card.tak-priority-high::after { background-color: #b35858; color: #ffffff; }
+.task-card.tak-priority-none::after { background-color: #85969b; color: #ffffff; }
+
+
+.task-card__header {
+  display: grid;
+  grid-template-columns: auto 1fr auto; /* number | title | actions */
+  gap: 4px; /* tighter spacing between number, time and action */
+  align-items: center;
+  padding: 8px 8px 4px 8px; /* right padding handled globally */
+}
+
+.task-number {
+  font-weight: 500;
+  color: #6a6d70;
+  display: inline-block;           /* necesario para ellipsis */
+  min-width: 0;                    /* permite que el grid lo encoja */
+  max-width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;         /* tres puntos si no cabe */
+  text-overflow: ellipsis;
+}
+
+.edo-time{
+  font-size: 12px;
+  color: #107e3e; /* green: tiempo en el estado */
+  font-weight: 600;
+  background: rgba(16, 126, 62, 0.08); /* sutil pastilla */
+  border: 1px solid rgba(16, 126, 62, 0.15);
+  border-radius: 10px;
+  padding: 1px 6px;
+  line-height: 1.2;
+  justify-self: end; /* push the time to the right, next to the priority */
+  margin-right: 0; /* pegado a la franja */
+}
+
+/* En la primera fila (número + tiempo), hace que el número ocupe el espacio flexible */
+.task-card__content > .task-card__header:first-child {
+  grid-template-columns: 1fr auto; /* numero (1fr) | tiempo (auto) */
+}
+
+
+
+/* Clases generales de prioridad (no afectan la franja) */
+.tak-priority-normal{
+  font-weight: 700;
+  justify-self: end; /* al extremo derecho */
+  align-self: center;
+}
+
+.tak-priority-medium{
+  font-weight: 700;
+  justify-self: end; /* al extremo derecho */
+  align-self: center;
+}
+
+.tak-priority-high{
+  font-weight: 700;
+  justify-self: end; /* al extremo derecho */
+  align-self: center;
+}
+
+.task-time{
+  font-size: 12px;
+  color: #5c6264; /* green: tiempo en el estado */
+  font-weight: 600;
+  background: rgba(16, 126, 62, 0.08); /* sutil pastilla */
+  border: 1px solid rgba(16, 126, 62, 0.15);
+  border-radius: 10px;
+  padding: 1px 6px;
+  line-height: 1.2;
+  justify-self: end; /* push the time to the right, next to the priority */
+  margin-right: 6px; /* espacio antes del número de prioridad */
+}
+
+.task-title {
+  font-weight: 800;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+/* Assignee label: small, bold, italic */
+.task-assignee {
+  font-size: 12px;
+  font-weight: 700;
+  font-style: italic;
+  color: #3b3b81; /* azul marino */
+}
+.task-assignee-oAsig {
+  font-size: 10px;
+  font-weight: 700;
+  font-style: italic;
+  color: #3b3b81; /* azul marino */
+}
+
+/* Removed unused action/meta styles to simplify */
+
+.task-progressbar {
+  flex: 0 0 30%;
+  min-width: 64px;
+  margin: 0;
+}
+/* Removed unused card-header helper */
+
+.task-terminada {
+  --ui5-card-background-color: #f0f0f0;
+  --sapThematicColor-Neutral: #888888;
+  cursor: not-allowed;
+}
+
+/* Estilos para pantallas pequeñas (móviles) */
+@media (max-width: 768px) {
+  .kanban-board {
+    grid-template-columns: 1fr; /* Una columna en móviles */
+    overflow-x: hidden;
+  }
+}
+
+/* Mejora de responsividad: en pantallas muy anchas permitir más columnas por fila */
+@media (min-width: 1200px) {
+  .kanban-board {
+    --kanban-min-col: 160px; /* más columnas en filas amplias */
+    gap: 10px;
+  }
+}
+
+@media (min-width: 1600px) {
+  .kanban-board {
+    --kanban-min-col: 150px; /* objetivo ~10 columnas si hay espacio */
+    gap: 8px;
+  }
+}
+
+.li-tarea-avance{
+    cursor: pointer;
+}
+
+.tarea-avance-progress{
+  max-width: 20px;
+}
+
+/* Removed unused layout helpers to simplify */
+
+/* Make the title row span full width (second header block) */
+.task-title {
+  grid-column: 1 / -1;
+}
+
+/* Drag styles */
+.cdk-drag-preview {
+  box-sizing: border-box;
+  border-radius: 8px;
+}
+.cdk-drag-placeholder {
+  opacity: 0.2;
+}
+
+/* Optional subtle hover */
+.task-card:hover {
+  box-shadow: 0 2px 6px rgba(0,0,0,0.12);
+}
+
+/* Footer row: keep everything on one line and hide overflow */
+.task-footer {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  overflow: hidden; /* ensure it won't wrap to a second line */
+  margin: 6px 0 8px 8px; /* align with content padding */
+}
+
+.task-footer-oAsig {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  overflow: hidden; /* ensure it won't wrap to a second line */
+  margin: 6px 0 8px 8px; /* align with content padding */
+}
+.task-footer-oAsig-header {
+  background-color: #c1dce9; /* azul celeste */
+  padding: 4px 8px;
+  border-radius: 6px;
+}
+
+.task-percent { flex: 0 0 auto; }
+.task-time    { flex: 0 0 auto; }

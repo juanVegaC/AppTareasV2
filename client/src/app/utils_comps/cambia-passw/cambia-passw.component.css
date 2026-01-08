@@ -1,0 +1,58 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.row-password{
+    display: flex;
+}
+.password-lbl {
+    text-align: right;
+    min-width: 35%;
+    padding-right: 1rem;
+}
+
+.password-txt {
+    text-align: left;
+    min-width: 65%;
+}
+
+.password-txt-input {
+    min-width: 8rem;
+    width: 8rem;
+}
+
+
+.btn-login {
+    text-align: left;
+    min-width: 50%;
+}
+
+div {
+    /*border: 1px solid #000;*/
+    flex-grow: 1;
+}
+
+
+.row-btn-login{
+    display: flex;
+}
+
+.row-blank{
+    min-height: 1rem;
+}
+
+.row-messages{
+    display: flex;
+}
+
+.msg-text{
+    text-align: center;
+    min-width: 90%;
+    position: absolute;
+    bottom: 0px;
+}
+.msg-info-btn{
+    position: absolute;
+    bottom: 0px;    
+}

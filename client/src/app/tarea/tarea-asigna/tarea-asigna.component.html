@@ -1,0 +1,19 @@
+<div class="dialog-content">
+    <div class="edit-wrapper">
+        <ui5-label >Numero:</ui5-label>
+        <ui5-input [value]="tarea.numero" disabled></ui5-input>
+    </div>
+    <div class="edit-wrapper">
+        <ui5-label>Asignar a:</ui5-label>
+        <ui5-select #selectReAsignarA (change)="AsignarAChanged($event)">
+            <ui5-option></ui5-option>
+            <ng-container *ngFor="let puesto of puestosParaTarea">
+                <ui5-option value="{{puesto.puestoId}}">{{puesto.nombre}} ({{puesto.puestoTitulo}})</ui5-option>
+            </ng-container>                    
+        </ui5-select>
+    </div>    
+</div>
+<div class="dialog-footer">
+    <ui5-button design="Transparent" class="dialog-footer-btn--cancel" (click)="closeAsigna()">Cancelar</ui5-button>
+    <ui5-button design="Emphasized" class="dialog-footer-btn--save" (click)="saveAsigna()">Asignar</ui5-button>
+</div>

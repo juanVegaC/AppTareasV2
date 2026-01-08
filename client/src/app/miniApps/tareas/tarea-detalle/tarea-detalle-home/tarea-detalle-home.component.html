@@ -1,0 +1,15 @@
+<div class="dialog-content">
+    <ui5-tabcontainer tab-layout="Standard">
+    <ui5-tab text="Tarea" selected>
+        <app-tarea-det-general [tarea]="tarea"></app-tarea-det-general>
+    </ui5-tab>
+    <ui5-tab text="H. Estados"></ui5-tab>
+    <ui5-tab text="Actividades">
+        <app-tarea-det-actv [tarea]="tarea"></app-tarea-det-actv>
+    </ui5-tab>
+    </ui5-tabcontainer>    
+</div>
+<div class="dialog-footer">
+    <ui5-button design="Transparent" class="dialog-footer-btn--cancel" (click)="close()">Cerrar</ui5-button>
+</div>
+

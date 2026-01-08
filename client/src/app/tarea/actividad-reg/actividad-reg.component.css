@@ -1,0 +1,126 @@
+.row-tarea-num{
+    display: flex;
+}
+
+.tarea-num {
+    text-align: right;
+    min-width: 75%;
+    padding-right: 1rem;
+}
+.tarea-num-lbl {
+    text-align: left;
+    min-width: 25%;
+    padding-right: 1rem;
+}
+
+.row-estatus{
+    display: flex;
+}
+
+
+.estatus {
+    text-align: right;
+    min-width: 75%;
+    padding-right: 1rem;
+}
+.estatus-lbl {
+    text-align: left;
+    min-width: 25%;
+    padding-right: 1rem;
+}
+
+.row-asignar-a{
+    display: flex;
+}
+
+.asignar-a {
+    text-align: right;
+    min-width: 75%;
+    padding-right: 1rem;
+}
+.asignar-a-lbl {
+    text-align: left;
+    min-width: 25%;
+    padding-right: 1rem;
+}
+
+.row-avance{
+    display: flex;
+}
+
+.avance {
+    text-align: right;
+    min-width: 75%;
+    padding-right: 1rem;
+}
+.avance-lbl {
+    text-align: left;
+    min-width: 25%;
+    padding-right: 1rem;
+}
+.row-fecha{
+    display: flex;
+}
+
+.fecha {
+    text-align: right;
+    min-width: 75%;
+    padding-right: 1rem;
+}
+.fecha-lbl {
+    text-align: left;
+    min-width: 25%;
+    padding-right: 1rem;
+}
+
+.row-tiempo{
+    display: flex;
+}
+
+.tiempo {
+    text-align: left;
+    min-width: 67%;
+}
+
+.tiempo-hrs {
+    text-align: right;
+    min-width: 4rem;
+    width: 4rem;
+}
+
+
+.tiempo-mins {
+    text-align: right;
+    min-width: 4rem;
+    width: 4rem;
+}
+
+
+.tiempo-lbl {
+    text-align: left;
+    min-width: 33%;
+    padding-right: 1rem;
+}
+
+.row-actividades-lbl{
+    display: flex;
+}
+
+.actividades-lbl{
+    text-align: left;
+    min-width: 100%;
+}
+.row-actividades{
+    display: flex;
+}
+
+.actividades{
+    text-align: left;
+    min-width: 100%;
+}
+
+.actividad-texto{
+    height: 100px;
+	display: inline-block;
+	width: 100%;   
+}

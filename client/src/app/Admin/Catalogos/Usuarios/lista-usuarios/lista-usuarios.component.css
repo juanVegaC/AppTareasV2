@@ -1,0 +1,20 @@
+.row-menu{
+	max-width: 100%;
+}
+
+.menu-back{
+    margin-left: 1rem;
+}
+
+.menu-refresh{
+    margin-left: 1rem;
+}
+
+.row-busy-ind{
+    display: flex;
+}
+
+.busy-ind{
+    min-width: 100%;
+    text-align: center;
+}

@@ -1,0 +1,7 @@
+<div class="container">
+    <div class="edit-wrapper">
+    </div>    
+    <app-lista-mis-puestos (selectedPuestoChanged)="handleSelectedPuestoChanged($event)"></app-lista-mis-puestos>
+    <app-tablero-kanban [puestoSelected]="puestoSelected"></app-tablero-kanban>
+    <!-- <app-lista-tareas-n [puestoSelected]="puestoSelected" [configView]="listaTareasViewConfig"></app-lista-tareas-n> -->
+</div>

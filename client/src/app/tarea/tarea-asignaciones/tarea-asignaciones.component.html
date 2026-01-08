@@ -1,0 +1,57 @@
+<ui5-bar slot="header" design="Header">
+    <ui5-title level="H5" slot="startContent">Asignaciones</ui5-title>
+    <ui5-button class="dialogCloser" design="Transparent" id="closeDialogButton" slot="endContent"
+        icon="decline" (click)="close()"></ui5-button>
+</ui5-bar>
+<div class="dialog-content">
+    <ui5-card>
+        <ui5-card-header slot="header" [title-text]="tarea.numero" subtitle-text=""></ui5-card-header>
+        <ui5-list separators="None" style="margin-block-end: 0.75rem;">
+            <ng-container *ngFor="let asignacion of asignaciones">
+                <ui5-li-custom
+                [key]="asignacion.tareaId"
+                [id]="asignacion.tareaId"
+                [data-key]="asignacion.tareaId"
+                ng-class="{ 'hidden': todo.hidden }"
+                
+                >
+        
+                <div class="li-content">
+                    <span class="li-asig-nombreUsr">{{asignacion.nombreUsuario}}</span>
+                    <span class="li-asig-avance">{{asignacion.puestoTitulo}}</span>
+                </div>
+                </ui5-li-custom>
+                <ui5-li-custom
+                [key]="asignacion.tareaId"
+                [id]="asignacion.tareaId"
+                [data-key]="asignacion.tareaId"
+                ng-class="{ 'hidden': todo.hidden }"
+                
+                >
+        
+                <div class="li-content">
+                    <span class="li-asig-puesto">{{asignacion.estatusTxt}}</span>
+                    <span class="li-asig-estatus" *ngIf="!asignacion.puestoEsPool"><ui5-progress-indicator [value]="asignacion.avance"></ui5-progress-indicator></span>
+                </div>
+                </ui5-li-custom>
+                <ui5-li-custom
+                [key]="asignacion.tareaId"
+                [id]="asignacion.tareaId"
+                [data-key]="asignacion.tareaId"
+                ng-class="{ 'hidden': todo.hidden }"
+                
+                >
+        
+                <div class="li-content">
+                    <span class="li-asig-fechalbl">Asignada el:</span>
+                    <span class="li-asig-fecha">{{asignacion.creadoFe | date: 'dd-MM-yyyy hh:mm:ss'}}</span>
+                </div>
+                </ui5-li-custom>
+                <hr/>
+            </ng-container>
+        </ui5-list>
+    </ui5-card>
+</div>
+<div class="dialog-footer" slot="footer">
+    <ui5-button design="Transparent" class="dialog-footer-btn--cancel" (click)="close()">Cerrar</ui5-button>
+</div>

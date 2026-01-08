@@ -1,0 +1,11 @@
+API 
+
+Start: 
+dotnet watch
+
+Publish:
+dotnet publish -c Release -o ./publish
+
+Crear Migracion:
+dotnet ef migrations add M02 -o Data/Migrations
+dotnet ef database update

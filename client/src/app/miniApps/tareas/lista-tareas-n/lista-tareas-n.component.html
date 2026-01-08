@@ -1,0 +1,135 @@
+<div class="container">
+    <div class="edit-wrapper">
+    </div>    
+    <div>
+        <div class="row-busy-ind">
+            <div class="busy-ind">
+                <ui5-busy-indicator #busy_indicator></ui5-busy-indicator>
+            </div>
+        </div>
+    </div>   
+    <div style="height: 400px; overflow: scroll;">
+        <ui5-table growing="Scroll" busy-delay="0" sticky-column-header>
+            <ui5-table-column slot="columns">
+                <span>Id</span>
+            </ui5-table-column>
+            <ui5-table-column slot="columns">
+                <span>Tarea</span>
+            </ui5-table-column>
+            <ui5-table-column slot="columns">
+                <span>Descripción</span>
+            </ui5-table-column>    
+            <ui5-table-column *ngIf="configView.showPrioridadPuesto" slot="columns">
+                <span>Prioridad y Avance</span>
+                <br>
+                <span class="segunda-linea" *ngIf="puestoSelected?.nombre">{{puestoSelected.nombre}}</span>
+            </ui5-table-column>
+            <ui5-table-column slot="columns">
+                <span>En atención con:</span>
+            </ui5-table-column>
+            <ui5-table-column slot="columns">
+                <span>Estatus</span>
+            </ui5-table-column>
+            <ui5-table-column *ngIf="configView.showPrioridadAtendiendo" slot="columns">
+                <span>Prioridad</span>
+            </ui5-table-column>    
+            <ui5-table-column *ngIf="configView.showAvanceAtendiendo" slot="columns">
+                <span>Avance</span>
+            </ui5-table-column>
+            <ui5-table-column *ngIf="configView.showAccionesBoton" slot="columns">
+                <span>Acciones</span>
+            </ui5-table-column>
+
+            <ng-container *ngFor="let tarea of tareas">
+                <ui5-table-row>
+                    <ui5-table-cell>
+                        <span class="li-tarea-id" (click)="handleShowTareaDetails(tarea.id)">{{tarea.id}}</span>
+                    </ui5-table-cell>
+                    <ui5-table-cell>
+                        <span class="li-tarea-numero"  (click)="handleShowTareaDetails(tarea.id)">{{tarea.numero}}</span>
+                    </ui5-table-cell>
+                    <ui5-table-cell>
+                        <span class="li-tarea-description"  title={{tarea.texto}} (click)="handleShowTareaDetails(tarea.id)">{{getTareaTextPreview(tarea.texto)}}</span>
+                    </ui5-table-cell>
+                    <ui5-table-cell *ngIf="configView.showPrioridadPuesto">
+                    <div class="prioridad-container">
+                        <span class="prioridad-badge prioridad-{{tarea.prioridadPuesto}}" (click)="handleShowPrioridadesPuesto(tarea.id)">{{tarea.prioridadPuesto}}</span>
+                        <span class="li-tarea-avance" (click)="handleShowActividades(tarea.asigIdPuesto, tarea.id)"><ui5-progress-indicator class="tarea-avance-progress" [value]="tarea.avancePuesto"></ui5-progress-indicator></span>
+                    </div>
+                    </ui5-table-cell>
+                    <ui5-table-cell  class="asignacion-actual">
+                        <span>{{tarea.asignadoANombre}}</span>
+                        <br>
+                        <span class="asig-a-puesto">{{tarea.asignadoAPuesto}}</span>
+                    </ui5-table-cell>
+                <ui5-table-cell>
+                    <span class="estatus-negrita">{{tarea.estatusTxt}}</span>
+                    <br>
+                    <span class="asig-desde">Desde: {{tarea.asignadoFe | date: 'dd-MMM'}}</span>
+                </ui5-table-cell> 
+                <ui5-table-cell *ngIf="configView.showPrioridadAtendiendo" >
+                    <ui5-button #btnPrioridad id="btnTareaPrioridad"  class="edit-btn" (click)="handleShowPrioridades(tarea.id)">{{tarea.prioridad}}</ui5-button>
+                </ui5-table-cell >
+                    <ui5-table-cell *ngIf="configView.showAvanceAtendiendo" >
+                        <span class="li-tarea-avance" (click)="handleShowActvAtendiendo(tarea.asigId,tarea.id)"><ui5-progress-indicator class="tarea-avance-progress" [value]="tarea.avance"></ui5-progress-indicator></span>
+                    </ui5-table-cell>
+                    <ui5-table-cell *ngIf="configView.showAccionesBoton" >
+                        <span>
+                            <ui5-button #btnTareaAcciones id="btnTareaAcciones" [disabled]="disableTMenu(tarea)" (click)="handleTareaMenu($event,tarea.id,tarea.asigId)" icon="menu" class="edit-btn"></ui5-button>
+                            <ui5-menu header-text="Acciones para Tarea" #menuTarea (item-click)="handleTareaEdit($event)" opener="btnTareaAcciones">
+                                <ui5-menu-item text="Reg.Avance" [disabled]="disableTMenuRegAct()"  icon="activities"></ui5-menu-item>
+                                <ui5-menu-item text="Asignar" [disabled]="disableTMenuAsignar()" icon="add-employee"></ui5-menu-item>
+                                <ui5-menu-item text="Desasignar" [disabled]="disableTMenuDesAsignar()" icon="employee-rejections"></ui5-menu-item>
+                                <ui5-menu-item text="Editar" [disabled]="disableTMenuEditar()" icon="edit"></ui5-menu-item>
+                                <ui5-menu-item text="Borrar" [disabled]="disableTMenuBorrar()" icon="delete"></ui5-menu-item>
+                            </ui5-menu>                            
+                        </span>
+                    </ui5-table-cell>>
+                </ui5-table-row>    
+            </ng-container>
+        </ui5-table>
+    </div>
+    <aside>
+        <ui5-dialog #dialogTareaConfAct header-text="Confirmar" draggable="true" >
+            <app-tarea-conf-act [tarea]="oTareaSelected" [action]="poConfirmTareaActionConfig" (cerrar)="handleCloseTareaSFunc($event)"></app-tarea-conf-act>
+        </ui5-dialog>
+    </aside>
+    <!-- <aside>
+        <ui5-dialog #dialogAsignaciones>
+            <app-tarea-asignaciones-n [tarea]="oTareaCurrent"  (cerrar)="handleCloseAsignaciones($event)"></app-tarea-asignaciones-n>
+        </ui5-dialog>
+    </aside> -->
+    <aside>
+        <ui5-dialog #dialogTareaEdit  header-text="Editar tarea">
+            <app-tarea-edit [tarea]="oTareaEdit" (cerrar)="handleCloseTareaEdit($event)"></app-tarea-edit>
+        </ui5-dialog>
+    </aside>
+    <aside>
+        <ui5-dialog #dialogTareaAsigna header-text="Asignar tarea" >
+            <app-tarea-asigna [tarea]="oTareaAsigna" (cerrar)="handleCloseTareaAsigna($event)"></app-tarea-asigna>
+        </ui5-dialog>
+    </aside> 
+    <aside>
+        <ui5-dialog #dialogTareaPrioridades header-text="Prioridades" draggable resizable>
+            <app-lista-prioridad [tareaSelected]="oTareaCurrent" [configView]="oLstPriorConfigView" (cerrar)="handleCloseTareaPrioridades($event)"></app-lista-prioridad>
+        </ui5-dialog>
+    </aside> 
+    <aside>
+        <ui5-dialog #dialogRegAvance header-text="Registar avances">
+            <app-actividad-reg [actividad]="oAvanceCreate" (cerrar)="handleCloseActvReg($event)" >
+
+            </app-actividad-reg>            
+        </ui5-dialog>
+    </aside> 
+    <aside>
+        <ui5-dialog #dialogListaActividades>
+            <app-lista-actividades [actvParam]="oActvAsigParam" [oTareaSelected]="oTareaCurrent" [configView]="oLstActvConfigView" (cerrar)="handleCloseListaActividades($event)"></app-lista-actividades>
+        </ui5-dialog>
+    </aside> 
+    <aside>
+        <ui5-dialog #dialogTareaDetails header-text="Detalle de tarea">
+            <app-tarea-details [tarea]="oTareaCurrent"  (cerrar)="handleCloseTareaDetails($event)"></app-tarea-details>
+        </ui5-dialog>
+    </aside> 
+   
+</div>

@@ -1,0 +1,5 @@
+/API/bin
+/API/obj
+/API/wwwroot
+/API/publish
+/API/appsettings.Development.json

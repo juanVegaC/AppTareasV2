@@ -1,0 +1,21 @@
+export interface TabEstadosGetAllRes{
+    id:number;
+    tableroId:number;
+    estadoId:number;
+    estado:string;
+    posicion:number;
+    poolAsigId:number;
+    poolAsig:string;
+    poolAsigTabId:number;
+    poolAsigTab:string;
+    poolAsigEdoId:number;
+    poolAsigEdo:string;
+    cierraAsig:boolean;
+    asignadoPor:string;
+    asigAPuestoId:number;
+    asigATabId:number;
+    asigAEdoId:number;
+    asigAPuesto:string;
+    asigATab:string;
+    asigAEdo:string;
+ }

@@ -1,0 +1,51 @@
+.li-content {
+	display: flex;
+	width: 100%;
+}
+
+.li-asig-nombreUsr {
+	display: flex;
+	min-width: 50%;
+	align-items: left;
+    font-weight: bold;
+}
+.li-asig-avance {
+	display: flex;
+	min-width: 50%;
+	align-items: left;
+}
+.li-asig-puesto {
+	display: flex;
+	min-width: 50%;
+	align-items: left;
+}
+.li-asig-estatus {
+	display: flex;
+	min-width: 50%;
+	align-items: left;
+}
+.li-asig-fechalbl {
+	display: flex;
+	min-width: 50%;
+	align-items: left;
+}
+.li-asig-fecha {
+	display: flex;
+	min-width: 50%;
+	align-items: left;
+}
+
+hr {
+    display: flex;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #2f2e2e;
+    margin: 1em 0;
+    padding: 0;
+}
+
+.asig-a-puesto{
+    font-style: italic; 
+    font-size: x-small;
+    color: grey;
+}

@@ -1,0 +1,58 @@
+.li-tarea-prioridad {
+	display: flex;
+	max-width: 100%;
+	align-items: center;
+	margin-right: 0.5rem;
+}
+
+.prioridad-column span {
+	font-weight: bold;
+	color: #0854a0;
+	text-transform: uppercase;
+	letter-spacing: 0.5px;
+}
+
+
+.li-tarea-prioridad select {
+	width: 100%;
+	padding: 6px;
+	border: 1px solid #bfbfbf;
+	border-radius: 4px;
+	background-color: white;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+	transition: all 0.2s ease-in-out;
+	font-weight: 500;
+}
+
+.li-tarea-prioridad select:hover {
+	border-color: #0854a0;
+	box-shadow: 0 2px 5px rgba(8, 84, 160, 0.2);
+}
+
+.li-tarea-prioridad select:focus {
+	outline: none;
+	border-color: #0854a0;
+	box-shadow: 0 0 0 2px rgba(8, 84, 160, 0.25);
+}
+
+/* Style for different priority values based on their number */
+.li-tarea-prioridad select option[value="1"] {
+	background-color: #d4edda;
+	color: #155724;
+}
+
+.li-tarea-prioridad select option[value="2"] {
+	background-color: #d1ecf1;
+	color: #0c5460;
+}
+
+.li-tarea-prioridad select option[value="3"] {
+	background-color: #fff3cd;
+	color: #856404;
+}
+
+.li-tarea-prioridad select option[value="4"], 
+.li-tarea-prioridad select option[value="5"] {
+	background-color: #f8d7da;
+	color: #721c24;
+}

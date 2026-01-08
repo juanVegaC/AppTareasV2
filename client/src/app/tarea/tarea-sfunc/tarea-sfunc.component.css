@@ -1,0 +1,16 @@
+.po-tarea-conf-message-title{
+    font-weight: bold;
+    font-size:1.2rem;
+}
+.po-tarea-conf-message-line-1{
+    font-size: 1rem;
+}
+
+.confirm-tarea-accion-btn-Yes{
+    margin-right: 1em;
+}
+
+.confirm-tarea-accion-btn-No{
+    margin-left: 1em;
+}
+

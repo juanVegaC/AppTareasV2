@@ -1,0 +1,62 @@
+.container {
+    display: flex;
+    flex-direction: column;
+}
+
+.usr-lbl {
+    text-align: right;
+    min-width: 47%;
+    padding-right: 1rem;
+}
+.usr-txt {
+    text-align: left;
+    min-width: 53%;
+}
+
+.psw-lbl {
+    text-align: right;
+    min-width: 47%;
+    padding-right: 1rem;
+}
+.psw-txt {
+    text-align: left;
+    min-width: 53%;
+}
+
+.btn-login {
+    text-align: left;
+    min-width: 50%;
+}
+
+div {
+    /*border: 1px solid #000;*/
+    flex-grow: 1;
+}
+
+.row-user{
+    display: flex;
+}
+.row-password{
+    display: flex;
+}
+.row-btn-login{
+    display: flex;
+}
+.row-blank{
+    min-height: 1rem;
+}
+
+.row-blank-2{
+    min-height: 5rem;
+}
+
+.row-busy-ind{
+    display: flex;
+}
+
+
+.busy-ind{
+    min-width: 100%;
+    text-align: center;
+}
+

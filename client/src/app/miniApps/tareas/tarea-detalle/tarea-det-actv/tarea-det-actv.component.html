@@ -1,0 +1,8 @@
+<div class="component">
+    <ui5-timeline>
+        <ui5-label>Total: {{get_total_tiempo()}} {{get_total_avance()}}</ui5-label>    
+        <ng-container *ngFor="let actividad  of actividades">
+          <ui5-timeline-item [subtitleText]="actividad.fecha | date:'dd MMMM yyyy'" icon="task" [name]="actividad.texto">{{get_tiempo_act(actividad)}}</ui5-timeline-item>
+        </ng-container>
+ </ui5-timeline>
+</div>

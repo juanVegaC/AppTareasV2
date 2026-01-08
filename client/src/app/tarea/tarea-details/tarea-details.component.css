@@ -1,0 +1,56 @@
+.dialog-content {
+    background: #fff;
+    border-radius: 14px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.10);
+    padding: 2rem 2.5rem 1.5rem 2.5rem;
+    margin-bottom: 0.5rem;
+    min-width: 340px;
+    text-align: left;
+}
+
+.tarea-texto-textarea {
+	height: 200px;
+	display: inline-block;
+	width: 100%;
+}
+
+.edit-wrapper {
+    margin-bottom: 1.2rem;
+}
+
+.tarea-numero {
+    color: #1976d2;
+    font-weight: bold;
+    font-size: 1.1rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+    display: inline-block;
+}
+
+ui5-label {
+    font-size: 1rem;
+    color: #333;
+    line-height: 1.5;
+}
+
+.dialog-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 0 2.5rem 1.2rem 2.5rem;
+}
+
+.dialog-footer-btn--cancel {
+    color: #1976d2;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: background 0.2s;
+}
+
+.dialog-footer-btn--cancel:hover {
+    background: #f0f4fa;
+    border-radius: 6px;
+}
+
+.tarea-avance-progress{
+    max-width: 20px;
+}

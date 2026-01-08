@@ -1,0 +1,181 @@
+.li-tarea-avance{
+    cursor: pointer;
+}
+
+.li-tarea-id{
+    cursor: pointer;
+}
+
+.li-tarea-numero{
+    cursor: pointer;
+}
+
+.li-tarea-description{
+    cursor: pointer;
+}
+
+.tarea-estatus{
+    cursor: pointer;
+}
+
+.tarea-avance-progress{
+    max-width: 20px;
+}
+
+.row-menu{
+	max-width: 100%;
+}
+
+.busy-ind{
+    min-width: 100%;
+    text-align: center;
+}
+
+.button-refresh{
+	margin-left: 0.5rem;
+}
+
+.menu-lista-puestos{
+	max-width: 50%;
+	min-width: 10rem;
+	width: 20rem;
+}
+
+.edit-btn {
+	margin-right: 0.5rem;
+}
+
+.asignacion-actual-1{
+    background-color: rgb(208, 198, 198);
+}
+
+.asig-a-puesto{
+    font-style: italic; 
+    font-size: x-small;
+    color: grey;
+}
+
+.asig-desde{
+    font-style: italic; 
+    font-size: x-small;
+    color: grey;
+}
+
+.segunda-linea{
+    font-style: italic; 
+    font-size: x-small;
+    color: grey;
+}
+.estatus-negrita{
+    color: grey;
+    font-weight: bold;
+}
+.prioridad-negrita{
+    font-style: italic; 
+    font-size: smaller;
+    font-weight: bold;
+    cursor:pointer;
+    color:blue;
+    text-decoration:underline;
+}
+
+.tarea-row-content {
+	display: flex;
+	width: 100%;
+}
+
+.tarea-text-cell{
+    max-width: 35%;
+}
+.tarea-text {
+    display: -webkit-box;
+    -webkit-line-clamp: 2; 
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.en-atencion-title {
+    color: rgb(133, 133, 212);
+    background-color: rgb(133, 133, 212);
+    font-weight: bold; /* Optional: Make the text bold */
+}
+
+/* Professional Priority styling */
+.prioridad-badge {
+  display: inline-flex;
+  min-width: 36px;
+  height: 24px;
+  border-radius: 3px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  font-family: "72", "72full", Arial, Helvetica, sans-serif;
+}
+
+/* Higher priorities (1-4) with more professional colors */
+.prioridad-1 {
+  background-color: #bb0000; /* Critical - Darker Red */
+}
+
+.prioridad-2 {
+  background-color: #d14900; /* Medium-High - Burnt Orange */
+}
+
+.prioridad-3 {
+  background-color: #e9730c; /* High - Corporate Orange */
+
+}
+
+.prioridad-4 {
+  background-color: #e78c07; /* Medium - Muted Amber */
+}
+
+/* All lower priorities (5+) share the same professional blue color */
+.prioridad-badge:not(.prioridad-1):not(.prioridad-2):not(.prioridad-3):not(.prioridad-4) {
+  background-color: #1c75bc; /* Professional Blue for all priorities 5 and above */
+}
+
+/* Combined Priority and Avance styling */
+.prioridad-avance-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 4px 0;
+  align-items: center;
+}
+
+/* Enhance the avance indicator */
+.avance-indicator {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  gap: 2px;
+}
+
+.tarea-avance-progress {
+  width: 100%;
+  min-width: 60px;
+  max-width: 80px;
+  cursor: pointer;
+}
+
+.avance-percentage {
+  font-size: 11px;
+  color: #6a6d70;
+  font-weight: 500;
+}
+
+/* Add spacing between prioridad badge and avance indicator */
+.prioridad-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px; /* Adjust the gap as needed */
+}

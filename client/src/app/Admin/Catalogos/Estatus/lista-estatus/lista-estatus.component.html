@@ -1,0 +1,76 @@
+<div class="container">
+    <div class="row-menu">
+        <ui5-button (click)="handleRegresar()" class="menu-back" >&lt;</ui5-button>
+        <span> | </span>
+        <ui5-button (click)="handleAdd()"  >+ Estatus</ui5-button>
+        <ui5-button icon="sap-icon://refresh" (click)="reLoadData()"  class="menu-refresh"></ui5-button>
+    </div>
+    <div>
+        <div class="row-busy-ind">
+            <div class="busy-ind">
+                <ui5-busy-indicator #busy_indicator size="Medium"></ui5-busy-indicator>
+            </div>
+        </div>
+    </div>
+    <div style="height: 300px; overflow: scroll;">
+        <ui5-table growing="Scroll" busy-delay="0" sticky-column-header>
+            <ui5-table-column slot="columns">
+                <span>Id</span>
+            </ui5-table-column>
+            <ui5-table-column slot="columns">
+                <span>Tipo</span>
+            </ui5-table-column>
+            <ui5-table-column slot="columns">
+                <span>Estatus</span>
+            </ui5-table-column>
+            <ui5-table-column slot="columns">
+                <span>Texto Id</span>
+            </ui5-table-column>
+            <ui5-table-column slot="columns">
+                <span>Texto</span>
+            </ui5-table-column>
+            <ui5-table-column slot="columns">
+                <span>Borrado</span>
+            </ui5-table-column>
+            <ui5-table-column slot="columns">
+                <span>Editar</span>
+            </ui5-table-column>
+
+            <ng-container *ngFor="let estatu of estatus">
+                <ui5-table-row>
+                    <ui5-table-cell>
+                        <span>{{estatu.id}}</span>
+                    </ui5-table-cell>
+                    <ui5-table-cell>
+                        <span>{{estatu.tipo}}</span>
+                    </ui5-table-cell>
+                    <ui5-table-cell >
+                        <span>{{estatu.estatus}}</span>
+                    </ui5-table-cell>
+                    <ui5-table-cell >
+                        <span>{{estatu.textoId}}</span>
+                    </ui5-table-cell>
+                    <ui5-table-cell >
+                        <span>{{estatu.texto}}</span>
+                    </ui5-table-cell>
+                    <ui5-table-cell>
+                        <span><ui5-checkbox disabled [checked]="estatu.borrado"></ui5-checkbox></span>
+                    </ui5-table-cell>
+                    <ui5-table-cell>
+                        <span><ui5-button icon="sap-icon://edit" (click)="handleEdit($event,estatu.id)"></ui5-button></span>
+                    </ui5-table-cell>>
+                </ui5-table-row>    
+            </ng-container>
+        </ui5-table>
+    </div>
+    <aside>
+        <ui5-dialog #dialogEdit header-text="Editar estatus" >
+            <app-estatus-edit [estatus]="estatusEdit" (cerrar)="handleCloseEdit($event)"></app-estatus-edit>
+        </ui5-dialog>
+    </aside>    
+    <aside>
+        <ui5-dialog #dialogAdd header-text="Crear estatus" >
+            <app-estatus-add [estatus]="estatusAdd" (cerrar)="handleCloseAdd($event)"></app-estatus-add>
+        </ui5-dialog>
+    </aside>    
+</div>

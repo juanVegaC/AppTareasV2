@@ -1,0 +1,35 @@
+<div class="container">
+    <div class="dialog-content">
+        <div class="row">
+            <ui5-label class="lbl">Tipo:</ui5-label>
+            <ui5-input class="txt" #dialogTipoInput maxlength="10" [value]="estatus.tipo" disabled="true">
+                <div slot="valueStateMessage">{{tipoErrMsg}}</div>
+            </ui5-input>
+        </div>
+        <div class="row">
+            <ui5-label class="lbl">Estatus:</ui5-label>
+            <ui5-input class="txt" #dialogEstatusInput maxlength="3" [value]="estatus.estatus">
+                <div slot="valueStateMessage">{{estatusErrMsg}}</div>
+            </ui5-input>
+        </div>
+        <div class="row">
+            <ui5-label class="lbl">TextoId:</ui5-label>
+            <ui5-input class="txt" #dialogTextoIdInput maxlength="3" [value]="estatus.textoId">
+                <div slot="valueStateMessage">{{textoIdErrMsg}}</div>
+            </ui5-input>
+            </div>
+    </div>
+    <div class="dialog-footer">
+        <ui5-button design="Transparent" class="dialog-footer-btn--cancel" (click)="close()">Cancelar</ui5-button>
+        <ui5-button design="Emphasized" class="dialog-footer-btn--save" (click)="guardar()">Guardar</ui5-button>
+    </div>
+    <div class="row-blank"></div>
+    <div class="row-messages" *ngIf="(message.text)">
+        <div class="msg-text">
+            <ui5-message-strip (close)="closeAppMessage()" #ui_message design={{message.displayStyle}} hide-icon>{{message.text}}</ui5-message-strip>
+        </div>
+        <div class="msg-info-btn">
+            <ui5-button icon="sap-icon://information" design="Transparent"></ui5-button>
+        </div>
+    </div>
+</div>

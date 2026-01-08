@@ -1,0 +1,77 @@
+<div class="container">
+    <div class="row-menu">
+        <ui5-button (click)="handleRegresar()" class="menu-back" >&lt;</ui5-button>
+        <span> | </span>
+        <ui5-button (click)="handleAdd()"  >+ Puesto</ui5-button>
+        <ui5-button icon="sap-icon://refresh" (click)="reLoadData()"  class="menu-refresh"></ui5-button>
+    </div>
+    <div>
+        <div class="row-busy-ind">
+            <div class="busy-ind">
+                <ui5-busy-indicator #busy_indicator size="Medium"></ui5-busy-indicator>
+            </div>
+        </div>
+    </div>
+    <div style="height: 300px; overflow: scroll;">
+        <ui5-table growing="Scroll" busy-delay="0" sticky-column-header>
+            <ui5-table-column slot="columns">
+                <span>Id</span>
+            </ui5-table-column>
+            <ui5-table-column slot="columns">
+                <span>Titulo</span>
+            </ui5-table-column>
+            <ui5-table-column slot="columns">
+                <span>PuestoSupId</span>
+            </ui5-table-column>
+            <ui5-table-column slot="columns" (click)="ordenarPorPuestoSuperior()" style="cursor: pointer;">
+                <span>PuestoSuperior</span>
+            </ui5-table-column>
+            <ui5-table-column slot="columns">
+                <span>esPool</span>
+            </ui5-table-column>
+            <ui5-table-column slot="columns">
+                <span>Borrado</span>
+            </ui5-table-column>
+            <ui5-table-column slot="columns">
+                <span>Editar</span>
+            </ui5-table-column>
+
+            <ng-container *ngFor="let puesto of puestos">
+                <ui5-table-row (click)="handleSelectPuesto(puesto.id)">
+                    <ui5-table-cell>
+                        <span>{{puesto.id}}</span>
+                    </ui5-table-cell>
+                    <ui5-table-cell style="min-width: 20em;">
+                        <span>{{puesto.titulo}}</span>
+                    </ui5-table-cell>
+                    <ui5-table-cell>
+                        <span>{{puesto.puestoSupId}}</span>
+                    </ui5-table-cell>
+                    <ui5-table-cell>
+                        <span>{{puesto.puestoSupTitulo}}</span>
+                    </ui5-table-cell>
+                    <ui5-table-cell>
+                        <span><ui5-checkbox disabled [checked]="puesto.publico"></ui5-checkbox></span>
+                    </ui5-table-cell>
+                    <ui5-table-cell>
+                        <span><ui5-checkbox disabled [checked]="puesto.borrado"></ui5-checkbox></span>
+                    </ui5-table-cell>
+                    <ui5-table-cell>
+                        <span><ui5-button icon="sap-icon://edit" (click)="handleEdit($event,puesto.id)"></ui5-button></span>
+                    </ui5-table-cell>>
+                </ui5-table-row>    
+            </ng-container>
+        </ui5-table>
+    </div>
+    <app-lista-puestotab [puesto]="puestoSelected"></app-lista-puestotab>
+    <aside>
+        <ui5-dialog #dialogEdit header-text="Editar puesto" >
+            <app-puesto-edit [puesto]="puestoEdit" (cerrar)="handleCloseEdit($event)"></app-puesto-edit>
+        </ui5-dialog>
+    </aside>
+    <aside>
+        <ui5-dialog #dialogAdd header-text="Crear puesto" >
+            <app-puesto-add [puesto]="puestoAdd" (cerrar)="handleCloseAdd($event)"></app-puesto-add>
+        </ui5-dialog>
+    </aside>
+</div>

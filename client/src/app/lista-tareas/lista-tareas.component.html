@@ -1,0 +1,97 @@
+<div class="container">
+    <div class="edit-wrapper">
+    </div>    
+    <div class="row-menu">
+        <ui5-select class="menu-lista-puestos" #selectPuesto (change)="handlePuestoSelChange($event)">
+            <ng-container *ngFor="let puesto of puestos">
+                <ui5-option [selected]="puesto.principal" value="{{puesto.puestoId}}">{{puesto.nombre}} ({{puesto.puestoTitulo}})</ui5-option>
+            </ng-container>                    
+        </ui5-select>
+        <span> | </span>
+        <ui5-button (click)="handleTareaAdd()"  >+ Tarea</ui5-button>
+        <ui5-button icon="sap-icon://refresh" (click)="loadTareasData()"  class="button-refresh"></ui5-button>
+    </div>
+    <div>
+        <div class="row-busy-ind">
+            <div class="busy-ind">
+                <ui5-busy-indicator #busy_indicator size="Medium"></ui5-busy-indicator>
+            </div>
+        </div>
+    </div>
+    <div>
+        <ui5-list id="tareas-list" mode="None" (selectionChange)="handleChangeSelection($event)">
+            <div class="li-content">
+                <span class="li-tarea-numero">Tarea</span>
+                <span class="li-tarea-text" >Descripción</span>
+                <span class="li-tarea-estatus-lbl">Estatus</span>
+                <span class="li-tarea-avance-lbl">Avance</span>
+                <span class="li-tarea-prioridad">Prioridad</span>
+                <span class="li-tarea-actions"></span>
+            </div>            
+            <ng-container *ngFor="let tarea of tareas">
+                <ui5-li-custom
+                [key]="tarea.id"
+                [id]="tarea.id"
+                [data-key]="tarea.id"
+                ng-class="{ 'hidden': todo.hidden }"
+                
+                >
+        
+                <div class="li-content">
+                    <span class="li-tarea-numero"><a [attr.href]="tarea.docuUrl ? tarea.docuUrl : null" target="_blank">{{tarea.numero}}</a></span>
+                    <span class="li-tarea-text" title={{tarea.texto}}>{{tarea.texto}}</span>
+                    <span class="li-tarea-estatus">{{tarea.estatusTxt}}</span>
+                    <span class="li-tarea-avance" (click)="showAsiganciones(tarea.id,tarea.asigId)"><ui5-progress-indicator [value]="tarea.avance"></ui5-progress-indicator></span>
+                    <span class="li-tarea-prioridad">
+                        <select #selectPrioridad (change)="handlePrioridadSelChange($event)" [disabled]=" tarea.prioridad == 0">
+                            <ng-container *ngFor="let tarea2 of tareas">
+                                <option [selected]="tarea.id == tarea2.id" [disabled]="isPrioridadDisabled(tarea,tarea2)" [value]="tarea.asigId">{{tarea2.prioridad}}</option>
+                            </ng-container>                    
+                        </select>
+                    </span>
+                    <div class="li-tarea-actions">
+                        <ui5-button #btnTareaAcciones [disabled]="disableTMenu(tarea)" (click)="handleTareaMenu($event,tarea.id,tarea.asigId)" icon="menu" class="edit-btn"></ui5-button>
+                        <ui5-menu header-text="Acciones para Tarea" #menuTarea (item-click)="handleTareaEdit($event)" (before-open)="handleMTareaOpen($event)">
+                            <ui5-menu-item text="Reg.Avance" [disabled]="disableTMenuRegAct()"  icon="activities"></ui5-menu-item>
+                            <ui5-menu-item text="Asignar" [disabled]="disableTMenuAsignar()" icon="add-employee"></ui5-menu-item>
+                            <ui5-menu-item text="Desasignar" [disabled]="disableTMenuDesAsignar()" icon="employee-rejections"></ui5-menu-item>
+                            <ui5-menu-item text="Editar" [disabled]="disableTMenuEditar()" icon="edit"></ui5-menu-item>
+                            <ui5-menu-item text="Borrar" [disabled]="disableTMenuBorrar()" icon="delete"></ui5-menu-item>
+                        </ui5-menu>                        
+                    </div>
+                </div>
+                </ui5-li-custom>
+                <ui5-popover #popOverTareaActConf>
+                    <app-tarea-sfunc [tarea]="oTareaSelected" [action]="poConfirmTareaActionConfig" (cerrar)="handleCloseTareaSFunc($event)"></app-tarea-sfunc>
+                </ui5-popover>                        
+            </ng-container>
+        </ui5-list>                
+    </div>
+    <aside>
+        <ui5-dialog #dialogTareaAdd header-text="Crear tarea" >
+            <app-tarea-reg [tarea]="oTareaCreate" (cerrar)="handleCloseTareaReg($event)"></app-tarea-reg>
+        </ui5-dialog>
+    </aside>
+    <aside>
+        <ui5-dialog #dialogAsignaciones>
+            <app-tarea-asignaciones [tarea]="oTareaCurrent"  (cerrar)="handleCloseAsignaciones($event)"></app-tarea-asignaciones>
+        </ui5-dialog>
+    </aside>
+    <aside>
+        <ui5-dialog #dialogTareaEdit  header-text="Editar tarea">
+            <app-tarea-edit [tarea]="oTareaEdit" (cerrar)="handleCloseTareaEdit($event)"></app-tarea-edit>
+        </ui5-dialog>
+    </aside>
+    <aside>
+        <ui5-dialog #dialogTareaAsigna header-text="Asignar tarea" >
+            <app-tarea-asigna [tarea]="oTareaAsigna" (cerrar)="handleCloseTareaAsigna($event)"></app-tarea-asigna>
+        </ui5-dialog>
+    </aside> 
+    <aside>
+        <ui5-dialog #dialogRegAvance header-text="Registar avances">
+            <app-actividad-reg [actividad]="oAvanceCreate" (cerrar)="handleCloseActvReg($event)" >
+
+            </app-actividad-reg>            
+        </ui5-dialog>
+    </aside>    
+</div>
