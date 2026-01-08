@@ -1,9 +1,5 @@
 import { Injectable } from '@angular/core';
-import { 
-  HttpRequest,
-  HttpHandler,
-  HttpEvent,
-  HttpInterceptor} from '@angular/common/http';
+import { HttpRequest, HttpHandler, HttpEvent, HttpInterceptor } from '@angular/common/http';
 import { NavigationExtras, Router } from '@angular/router';
 import { Observable, catchError, throwError } from 'rxjs';
 import { MessageService } from '../_services/message.service';
