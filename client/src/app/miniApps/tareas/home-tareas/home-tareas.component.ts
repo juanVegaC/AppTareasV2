@@ -8,9 +8,10 @@ import { SListaTareasNViewConfig } from '../../../_views/config/SListaTareasNVie
 import { PuestoTabGetAllRes } from '../../../_models/PuestoTab/PuestoTabGetAll/PuestoTabGetAllRes';
 
 @Component({
-  selector: 'app-home-tareas',
-  templateUrl: './home-tareas.component.html',
-  styleUrl: './home-tareas.component.css'
+    selector: 'app-home-tareas',
+    templateUrl: './home-tareas.component.html',
+    styleUrl: './home-tareas.component.css',
+    standalone: false
 })
 export class HomeTareasComponent {
 

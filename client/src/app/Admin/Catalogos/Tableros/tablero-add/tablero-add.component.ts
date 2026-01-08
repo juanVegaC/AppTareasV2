@@ -5,9 +5,10 @@ import { TableroCreateReq } from '../../../../_models/Tableros/TableroCreate/Tab
 import { TableroService } from '../../../../_services/tablero.service';
 
 @Component({
-  selector: 'app-tablero-add',
-  templateUrl: './tablero-add.component.html',
-  styleUrl: './tablero-add.component.css'
+    selector: 'app-tablero-add',
+    templateUrl: './tablero-add.component.html',
+    styleUrl: './tablero-add.component.css',
+    standalone: false
 })
 export class TableroAddComponent {
   constructor(

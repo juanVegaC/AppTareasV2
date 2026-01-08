@@ -7,9 +7,10 @@ import { PuestoTabGetAllReq } from '../../../../_models/PuestoTab/PuestoTabGetAl
 import { PuestoTabEditReq } from '../../../../_models/PuestoTab/PuestoTabEdit/PuestoTabEditReq';
 
 @Component({
-  selector: 'app-lista-puestotab',
-  templateUrl: './lista-puestotab.component.html',
-  styleUrl: './lista-puestotab.component.css'
+    selector: 'app-lista-puestotab',
+    templateUrl: './lista-puestotab.component.html',
+    styleUrl: './lista-puestotab.component.css',
+    standalone: false
 })
 export class ListaPuestotabComponent implements OnChanges {
     constructor(

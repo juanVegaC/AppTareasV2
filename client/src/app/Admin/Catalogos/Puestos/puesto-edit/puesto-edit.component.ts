@@ -7,9 +7,10 @@ import { PuestosGetAllRes } from '../../../../_models/Puesto/PuestosGetAll/Puest
 import { PuestosGetAllReq } from '../../../../_models/Puesto/PuestosGetAll/PuestosGetAllReq';
 
 @Component({
-  selector: 'app-puesto-edit',
-  templateUrl: './puesto-edit.component.html',
-  styleUrl: './puesto-edit.component.css'
+    selector: 'app-puesto-edit',
+    templateUrl: './puesto-edit.component.html',
+    styleUrl: './puesto-edit.component.css',
+    standalone: false
 })
 export class PuestoEditComponent implements OnInit{
 

@@ -11,9 +11,10 @@ import { AsignacionesGetParams } from '../../_models/Asignacion/AsignacionesGetP
 import { AppMsg } from '../../_models/Messages/AppMsg';
 
 @Component({
-  selector: 'app-actividad-reg-n',
-  templateUrl: './actividad-reg-n.component.html',
-  styleUrl: './actividad-reg-n.component.css'
+    selector: 'app-actividad-reg-n',
+    templateUrl: './actividad-reg-n.component.html',
+    styleUrl: './actividad-reg-n.component.css',
+    standalone: false
 })
 export class ActividadRegNComponent {
 

@@ -7,9 +7,10 @@ import { AsignacionesDTareaRes } from '../../_models/Asignacion/AsignacionesDTar
 import { DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-tarea-details',
-  templateUrl: './tarea-details.component.html',
-  styleUrl: './tarea-details.component.css'
+    selector: 'app-tarea-details',
+    templateUrl: './tarea-details.component.html',
+    styleUrl: './tarea-details.component.css',
+    standalone: false
 })
 export class TareaDetailsComponent implements OnChanges{
 

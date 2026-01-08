@@ -5,9 +5,10 @@ import { AccountService } from '../../../../_services/account.service';
 import { appMessage } from '../../../../_models/appMessage';
 
 @Component({
-  selector: 'app-usuario-add',
-  templateUrl: './usuario-add.component.html',
-  styleUrl: './usuario-add.component.css'
+    selector: 'app-usuario-add',
+    templateUrl: './usuario-add.component.html',
+    styleUrl: './usuario-add.component.css',
+    standalone: false
 })
 export class UsuarioAddComponent implements OnInit {
 

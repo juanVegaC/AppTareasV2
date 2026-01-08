@@ -3,10 +3,11 @@ import { User } from './_models/user';
 import { AccountService } from './_services/account.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css',
-  encapsulation: ViewEncapsulation.None
+    selector: 'app-root',
+    templateUrl: './app.component.html',
+    styleUrl: './app.component.css',
+    encapsulation: ViewEncapsulation.None,
+    standalone: false
 })
 export class AppComponent {
   title = 'bio-tareas-cli';

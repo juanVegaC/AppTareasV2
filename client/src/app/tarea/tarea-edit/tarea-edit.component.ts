@@ -9,9 +9,10 @@ import { AppMsg } from '../../_models/Messages/AppMsg';
 import { TareaEditReqDat } from '../../_models/Tarea/TareaEdit/TareaEditReqDat';
 
 @Component({
-  selector: 'app-tarea-edit',
-  templateUrl: './tarea-edit.component.html',
-  styleUrl: './tarea-edit.component.css'
+    selector: 'app-tarea-edit',
+    templateUrl: './tarea-edit.component.html',
+    styleUrl: './tarea-edit.component.css',
+    standalone: false
 })
 export class TareaEditComponent implements OnInit, OnChanges {
 

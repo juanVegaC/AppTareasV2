@@ -9,9 +9,10 @@ import { TablerosEstatusGetAllRes } from '../../../../_models/TableroEstatus/Tab
 import { TableroEditReq } from '../../../../_models/Tableros/TableroEdit/TableroEditReq';
 
 @Component({
-  selector: 'app-lista-tableros',
-  templateUrl: './lista-tableros.component.html',
-  styleUrl: './lista-tableros.component.css'
+    selector: 'app-lista-tableros',
+    templateUrl: './lista-tableros.component.html',
+    styleUrl: './lista-tableros.component.css',
+    standalone: false
 })
 export class ListaTablerosComponent {
 

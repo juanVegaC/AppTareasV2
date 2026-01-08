@@ -28,9 +28,10 @@ interface Column {
 }
 
 @Component({
-  selector: 'app-tablero-kanban',
-  templateUrl: './tablero-kanban.component.html',
-  styleUrls: ['./tablero-kanban.component.css']
+    selector: 'app-tablero-kanban',
+    templateUrl: './tablero-kanban.component.html',
+    styleUrls: ['./tablero-kanban.component.css'],
+    standalone: false
 })
 export class TableroKanbanComponent implements OnChanges {
 

@@ -5,9 +5,10 @@ import { appMessage } from '../../../../_models/appMessage';
 import { AppMsg } from '../../../../_models/Messages/AppMsg';
 
 @Component({
-  selector: 'app-tablero-edit',
-  templateUrl: './tablero-edit.component.html',
-  styleUrl: './tablero-edit.component.css'
+    selector: 'app-tablero-edit',
+    templateUrl: './tablero-edit.component.html',
+    styleUrl: './tablero-edit.component.css',
+    standalone: false
 })
 export class TableroEditComponent {
   constructor(

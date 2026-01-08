@@ -5,9 +5,10 @@ import { appMessage } from '../../../../_models/appMessage';
 import { AppMsg } from '../../../../_models/Messages/AppMsg';
 
 @Component({
-  selector: 'app-estado-create',
-  templateUrl: './estado-create.component.html',
-  styleUrl: './estado-create.component.css'
+    selector: 'app-estado-create',
+    templateUrl: './estado-create.component.html',
+    styleUrl: './estado-create.component.css',
+    standalone: false
 })
 export class EstadoCreateComponent {
   constructor(

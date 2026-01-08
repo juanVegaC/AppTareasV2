@@ -13,9 +13,10 @@ import { PuestoTabGetAllReq } from '../../_models/PuestoTab/PuestoTabGetAll/Pues
 import { PuestoTabService } from '../../_services/puesto-tab.service';
 
 @Component({
-  selector: 'app-tarea-reg',
-  templateUrl: './tarea-reg.component.html',
-  styleUrl: './tarea-reg.component.css'
+    selector: 'app-tarea-reg',
+    templateUrl: './tarea-reg.component.html',
+    styleUrl: './tarea-reg.component.css',
+    standalone: false
 })
 export class TareaRegComponent implements OnInit, OnChanges {
 

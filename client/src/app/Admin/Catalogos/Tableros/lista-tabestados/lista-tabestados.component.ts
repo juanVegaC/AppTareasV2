@@ -7,9 +7,10 @@ import { TabEstadosGetAllRes } from '../../../../_models/TabEstado/TabEstadosGet
 import { TabEstadoEditReq } from '../../../../_models/TabEstado/TabEstadoEdit/TabEstadoEditReq';
 
 @Component({
-  selector: 'app-lista-tabestados',
-  templateUrl: './lista-tabestados.component.html',
-  styleUrl: './lista-tabestados.component.css'
+    selector: 'app-lista-tabestados',
+    templateUrl: './lista-tabestados.component.html',
+    styleUrl: './lista-tabestados.component.css',
+    standalone: false
 })
 export class ListaTabestadosComponent implements OnChanges {
 

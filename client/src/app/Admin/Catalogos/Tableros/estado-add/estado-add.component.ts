@@ -9,9 +9,10 @@ import { TabEstadoCreateReq } from '../../../../_models/TabEstado/TabEstadoCreat
 import { TabEstadosService } from '../../../../_services/tab-estados.service';
 
 @Component({
-  selector: 'app-estado-add',
-  templateUrl: './estado-add.component.html',
-  styleUrl: './estado-add.component.css'
+    selector: 'app-estado-add',
+    templateUrl: './estado-add.component.html',
+    styleUrl: './estado-add.component.css',
+    standalone: false
 })
 export class EstadoAddComponent {
     constructor(

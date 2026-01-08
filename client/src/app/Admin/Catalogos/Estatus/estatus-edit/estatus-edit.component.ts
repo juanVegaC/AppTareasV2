@@ -5,9 +5,10 @@ import { appMessage } from '../../../../_models/appMessage';
 import { AppMsg } from '../../../../_models/Messages/AppMsg';
 
 @Component({
-  selector: 'app-estatus-edit',
-  templateUrl: './estatus-edit.component.html',
-  styleUrl: './estatus-edit.component.css'
+    selector: 'app-estatus-edit',
+    templateUrl: './estatus-edit.component.html',
+    styleUrl: './estatus-edit.component.css',
+    standalone: false
 })
 export class EstatusEditComponent {
   constructor(

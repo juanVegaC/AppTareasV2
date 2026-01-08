@@ -8,9 +8,10 @@ import { DesAsignarTareaReqData } from '../../_models/Tarea/TareaDesAsigna/DesAs
 import { TareaService } from '../../_services/tarea.service';
 
 @Component({
-  selector: 'app-tarea-conf-act',
-  templateUrl: './tarea-conf-act.component.html',
-  styleUrl: './tarea-conf-act.component.css'
+    selector: 'app-tarea-conf-act',
+    templateUrl: './tarea-conf-act.component.html',
+    styleUrl: './tarea-conf-act.component.css',
+    standalone: false
 })
 export class TareaConfActComponent {
 

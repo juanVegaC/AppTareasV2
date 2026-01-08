@@ -7,9 +7,10 @@ import { AppMsg } from '../../_models/Messages/AppMsg';
 import { DesAsignarTareaReqData } from '../../_models/Tarea/TareaDesAsigna/DesAsignarTareaReqData';
 
 @Component({
-  selector: 'app-tarea-sfunc',
-  templateUrl: './tarea-sfunc.component.html',
-  styleUrl: './tarea-sfunc.component.css'
+    selector: 'app-tarea-sfunc',
+    templateUrl: './tarea-sfunc.component.html',
+    styleUrl: './tarea-sfunc.component.css',
+    standalone: false
 })
 export class TareaSfuncComponent implements OnChanges {
 

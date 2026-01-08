@@ -9,9 +9,10 @@ import { TablerosGetAllReq } from '../../../../_models/Tableros/TablerosGetAll/T
 import { AppMsg } from '../../../../_models/Messages/AppMsg';
 
 @Component({
-  selector: 'app-puestotab-add',
-  templateUrl: './puestotab-add.component.html',
-  styleUrl: './puestotab-add.component.css'
+    selector: 'app-puestotab-add',
+    templateUrl: './puestotab-add.component.html',
+    styleUrl: './puestotab-add.component.css',
+    standalone: false
 })
 export class PuestotabAddComponent {
 

@@ -10,9 +10,10 @@ import { PuestoService } from '../../../../_services/puesto.service';
 import { PuestosGetAllReq } from '../../../../_models/Puesto/PuestosGetAll/PuestosGetAllReq';
 
 @Component({
-  selector: 'app-empleado-edit',
-  templateUrl: './empleado-edit.component.html',
-  styleUrl: './empleado-edit.component.css'
+    selector: 'app-empleado-edit',
+    templateUrl: './empleado-edit.component.html',
+    styleUrl: './empleado-edit.component.css',
+    standalone: false
 })
 export class EmpleadoEditComponent implements OnInit {
   constructor(

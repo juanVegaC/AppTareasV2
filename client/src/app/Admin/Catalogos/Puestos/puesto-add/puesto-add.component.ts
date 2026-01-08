@@ -7,9 +7,10 @@ import { PuestosGetAllRes } from '../../../../_models/Puesto/PuestosGetAll/Puest
 import { PuestosGetAllReq } from '../../../../_models/Puesto/PuestosGetAll/PuestosGetAllReq';
 
 @Component({
-  selector: 'app-puesto-add',
-  templateUrl: './puesto-add.component.html',
-  styleUrl: './puesto-add.component.css'
+    selector: 'app-puesto-add',
+    templateUrl: './puesto-add.component.html',
+    styleUrl: './puesto-add.component.css',
+    standalone: false
 })
 export class PuestoAddComponent implements OnInit {
   constructor(

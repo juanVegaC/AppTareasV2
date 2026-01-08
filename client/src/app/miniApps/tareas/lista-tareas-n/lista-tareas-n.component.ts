@@ -18,9 +18,10 @@ import { SListaActividadesViewConfig } from '../../../_views/config/SListaActivi
 import { SListaPrioridadesViewConfig } from '../../../_views/config/SListaPrioridadesViewConfig';
 
 @Component({
-  selector: 'app-lista-tareas-n',
-  templateUrl: './lista-tareas-n.component.html',
-  styleUrl: './lista-tareas-n.component.css'
+    selector: 'app-lista-tareas-n',
+    templateUrl: './lista-tareas-n.component.html',
+    styleUrl: './lista-tareas-n.component.css',
+    standalone: false
 })
 export class ListaTareasNComponent {
   //@Input() tareas;

@@ -7,9 +7,10 @@ import { MessageService } from '../../../../_services/message.service';
 import { UsuarioEditReq } from '../../../../_models/Usuario/UsuarioEdit/UsuarioEditReq';
 
 @Component({
-  selector: 'app-lista-usuarios',
-  templateUrl: './lista-usuarios.component.html',
-  styleUrl: './lista-usuarios.component.css'
+    selector: 'app-lista-usuarios',
+    templateUrl: './lista-usuarios.component.html',
+    styleUrl: './lista-usuarios.component.css',
+    standalone: false
 })
 export class ListaUsuariosComponent implements OnInit,AfterViewInit{
 

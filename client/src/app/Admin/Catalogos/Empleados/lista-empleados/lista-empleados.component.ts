@@ -9,9 +9,10 @@ import { formatDate } from '@angular/common';
 import { EmpleadoEditReq } from '../../../../_models/Empleado/EmpleadoEdit/EmpleadoEditReq';
 
 @Component({
-  selector: 'app-lista-empleados',
-  templateUrl: './lista-empleados.component.html',
-  styleUrl: './lista-empleados.component.css'
+    selector: 'app-lista-empleados',
+    templateUrl: './lista-empleados.component.html',
+    styleUrl: './lista-empleados.component.css',
+    standalone: false
 })
 export class ListaEmpleadosComponent implements AfterViewInit {
 

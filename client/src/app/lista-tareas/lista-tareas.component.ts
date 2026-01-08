@@ -16,9 +16,10 @@ import { TareaSelectedData } from '../_models/Tarea/TareaSelected/TareaSelectedD
 import { TareaActionData } from '../_models/Tarea/TareaAction/TareaActionData';
 import { TareaAvanceCreateData } from '../_models/Tarea/TareaAvance/TareaAvanceCreateData';
 @Component({
-  selector: 'app-lista-tareas',
-  templateUrl: './lista-tareas.component.html',
-  styleUrl: './lista-tareas.component.css'
+    selector: 'app-lista-tareas',
+    templateUrl: './lista-tareas.component.html',
+    styleUrl: './lista-tareas.component.css',
+    standalone: false
 })
 
 

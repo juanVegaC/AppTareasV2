@@ -2,9 +2,10 @@ import { Component } from '@angular/core';
 import { NavigationService } from '../../../../_services/navigation.service';
 
 @Component({
-  selector: 'app-cat-menu',
-  templateUrl: './cat-menu.component.html',
-  styleUrl: './cat-menu.component.css'
+    selector: 'app-cat-menu',
+    templateUrl: './cat-menu.component.html',
+    styleUrl: './cat-menu.component.css',
+    standalone: false
 })
 export class CatMenuComponent {
 

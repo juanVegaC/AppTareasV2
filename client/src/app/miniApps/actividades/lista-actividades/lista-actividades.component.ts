@@ -14,9 +14,10 @@ import { AsignacionesService } from '../../../_services/asignaciones.service';
 import { UpdateAsignacionesPrioridad } from '../../../_models/Asignacion/AsigUpdPrioridad/UpdateAsignacionesPrioridad';
 
 @Component({
-  selector: 'app-lista-actividades',
-  templateUrl: './lista-actividades.component.html',
-  styleUrl: './lista-actividades.component.css'
+    selector: 'app-lista-actividades',
+    templateUrl: './lista-actividades.component.html',
+    styleUrl: './lista-actividades.component.css',
+    standalone: false
 })
 export class ListaActividadesComponent implements OnChanges {
 

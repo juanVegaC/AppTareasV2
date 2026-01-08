@@ -6,9 +6,10 @@ import { AsignacionesDTareaRes } from '../../_models/Asignacion/AsignacionesDTar
 import { AsignacionesGetParams } from '../../_models/Asignacion/AsignacionesGetParams';
 
 @Component({
-  selector: 'app-tarea-asignaciones',
-  templateUrl: './tarea-asignaciones.component.html',
-  styleUrl: './tarea-asignaciones.component.css'
+    selector: 'app-tarea-asignaciones',
+    templateUrl: './tarea-asignaciones.component.html',
+    styleUrl: './tarea-asignaciones.component.css',
+    standalone: false
 })
 export class TareaAsignacionesComponent {
 

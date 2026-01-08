@@ -5,9 +5,10 @@ import { appMessage } from '../../../../_models/appMessage';
 import { AppMsg } from '../../../../_models/Messages/AppMsg';
 
 @Component({
-  selector: 'app-estatus-add',
-  templateUrl: './estatus-add.component.html',
-  styleUrl: './estatus-add.component.css'
+    selector: 'app-estatus-add',
+    templateUrl: './estatus-add.component.html',
+    styleUrl: './estatus-add.component.css',
+    standalone: false
 })
 export class EstatusAddComponent {
   constructor(

@@ -8,9 +8,10 @@ import { EstatusCreateReq } from '../../../../_models/Estatus/EstatusCreate/Esta
 import { EstatusEditReq } from '../../../../_models/Estatus/EstatusEdit/EstatusEditReq';
 
 @Component({
-  selector: 'app-lista-estatus',
-  templateUrl: './lista-estatus.component.html',
-  styleUrl: './lista-estatus.component.css'
+    selector: 'app-lista-estatus',
+    templateUrl: './lista-estatus.component.html',
+    styleUrl: './lista-estatus.component.css',
+    standalone: false
 })
 export class ListaEstatusComponent implements AfterViewInit{
 

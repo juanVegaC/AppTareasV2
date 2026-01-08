@@ -5,9 +5,10 @@ import { NavigationService } from '../_services/navigation.service';
 import { MessageService } from '../_services/message.service';
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styleUrls: ['./header.component.css']
+    selector: 'app-header',
+    templateUrl: './header.component.html',
+    styleUrls: ['./header.component.css'],
+    standalone: false
 })
 export class HeaderComponent implements OnInit, AfterViewInit {
   @Input() selectionChange: any;

@@ -3,9 +3,10 @@ import { AppMsg } from '../../../../_models/Messages/AppMsg';
 import { TareasPuestoTabDet } from '../../../../_models/TareasPuestoTab/TareasPuestoTabData/TareasPuestoTabDet';
 
 @Component({
-  selector: 'app-tarea-detalle-home',
-  templateUrl: './tarea-detalle-home.component.html',
-  styleUrl: './tarea-detalle-home.component.css'
+    selector: 'app-tarea-detalle-home',
+    templateUrl: './tarea-detalle-home.component.html',
+    styleUrl: './tarea-detalle-home.component.css',
+    standalone: false
 })
 export class TareaDetalleHomeComponent {
 

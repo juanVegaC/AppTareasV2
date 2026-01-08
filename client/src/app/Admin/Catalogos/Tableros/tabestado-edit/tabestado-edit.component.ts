@@ -15,9 +15,10 @@ import { TabEstadosGetAllRes } from '../../../../_models/TabEstado/TabEstadosGet
 import { TabEstadosGetAllReq } from '../../../../_models/TabEstado/TabEstadosGetAll/TabEstadosGetAllReq';
 
 @Component({
-  selector: 'app-tabestado-edit',
-  templateUrl: './tabestado-edit.component.html',
-  styleUrl: './tabestado-edit.component.css'
+    selector: 'app-tabestado-edit',
+    templateUrl: './tabestado-edit.component.html',
+    styleUrl: './tabestado-edit.component.css',
+    standalone: false
 })
 export class TabestadoEditComponent implements OnChanges  {
     constructor(

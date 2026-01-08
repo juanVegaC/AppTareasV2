@@ -9,9 +9,10 @@ import { PuestoTabService } from '../../../_services/puesto-tab.service';
 import { PuestoTabGetAllReq } from '../../../_models/PuestoTab/PuestoTabGetAll/PuestoTabGetAllReq';
 
 @Component({
-  selector: 'app-lista-mis-puestos',
-  templateUrl: './lista-mis-puestos.component.html',
-  styleUrl: './lista-mis-puestos.component.css'
+    selector: 'app-lista-mis-puestos',
+    templateUrl: './lista-mis-puestos.component.html',
+    styleUrl: './lista-mis-puestos.component.css',
+    standalone: false
 })
 export class ListaMisPuestosComponent {
   

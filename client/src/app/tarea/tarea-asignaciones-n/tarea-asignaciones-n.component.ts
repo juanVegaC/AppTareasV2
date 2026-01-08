@@ -6,9 +6,10 @@ import { AsignacionesGetParams } from '../../_models/Asignacion/AsignacionesGetP
 import { AppMsg } from '../../_models/Messages/AppMsg';
 
 @Component({
-  selector: 'app-tarea-asignaciones-n',
-  templateUrl: './tarea-asignaciones-n.component.html',
-  styleUrl: './tarea-asignaciones-n.component.css'
+    selector: 'app-tarea-asignaciones-n',
+    templateUrl: './tarea-asignaciones-n.component.html',
+    styleUrl: './tarea-asignaciones-n.component.css',
+    standalone: false
 })
 export class TareaAsignacionesNComponent {
   constructor(

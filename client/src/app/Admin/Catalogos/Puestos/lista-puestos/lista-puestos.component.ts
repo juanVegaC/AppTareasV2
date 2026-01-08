@@ -8,9 +8,10 @@ import { PuestoEditReq } from '../../../../_models/Puesto/PuestoEdit/PuestoEditR
 import { PuestoCreateReq } from '../../../../_models/Puesto/PuestoCreate/PuestoCreateReq';
 
 @Component({
-  selector: 'app-lista-puestos',
-  templateUrl: './lista-puestos.component.html',
-  styleUrl: './lista-puestos.component.css'
+    selector: 'app-lista-puestos',
+    templateUrl: './lista-puestos.component.html',
+    styleUrl: './lista-puestos.component.css',
+    standalone: false
 })
 export class ListaPuestosComponent implements AfterViewInit {
 

@@ -5,9 +5,10 @@ import { appMessage } from '../../../../_models/appMessage';
 import { AppMsg } from '../../../../_models/Messages/AppMsg';
 
 @Component({
-  selector: 'app-texto-edit',
-  templateUrl: './texto-edit.component.html',
-  styleUrl: './texto-edit.component.css'
+    selector: 'app-texto-edit',
+    templateUrl: './texto-edit.component.html',
+    styleUrl: './texto-edit.component.css',
+    standalone: false
 })
 export class TextoEditComponent {
   constructor(

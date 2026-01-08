@@ -6,9 +6,10 @@ import { appMessage } from '../../_models/appMessage';
 import { UsuarioChangePassReq } from '../../_models/Usuario/UsuarioChangePass/UsuarioChangePassReq';
 
 @Component({
-  selector: 'app-cambia-passw',
-  templateUrl: './cambia-passw.component.html',
-  styleUrl: './cambia-passw.component.css'
+    selector: 'app-cambia-passw',
+    templateUrl: './cambia-passw.component.html',
+    styleUrl: './cambia-passw.component.css',
+    standalone: false
 })
 export class CambiaPasswComponent {
 

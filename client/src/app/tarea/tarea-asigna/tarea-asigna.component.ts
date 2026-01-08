@@ -8,9 +8,10 @@ import { AppMsg } from '../../_models/Messages/AppMsg';
 import { AsignarTareaData } from '../../_models/Tarea/TareaAsigna/AsignarTareaData';
 
 @Component({
-  selector: 'app-tarea-asigna',
-  templateUrl: './tarea-asigna.component.html',
-  styleUrl: './tarea-asigna.component.css'
+    selector: 'app-tarea-asigna',
+    templateUrl: './tarea-asigna.component.html',
+    styleUrl: './tarea-asigna.component.css',
+    standalone: false
 })
 export class TareaAsignaComponent implements OnChanges{
 

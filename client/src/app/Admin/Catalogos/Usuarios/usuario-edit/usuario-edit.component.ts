@@ -5,9 +5,10 @@ import { appMessage } from '../../../../_models/appMessage';
 import { AppMsg } from '../../../../_models/Messages/AppMsg';
 
 @Component({
-  selector: 'app-usuario-edit',
-  templateUrl: './usuario-edit.component.html',
-  styleUrl: './usuario-edit.component.css'
+    selector: 'app-usuario-edit',
+    templateUrl: './usuario-edit.component.html',
+    styleUrl: './usuario-edit.component.css',
+    standalone: false
 })
 export class UsuarioEditComponent {
 

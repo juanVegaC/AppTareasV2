@@ -10,9 +10,10 @@ import { usuariosGetAllRes } from '../../../../_models/Usuario/UsuariosGetAll/Us
 import { UserAdminService } from '../../../../_services/user-admin.service';
 
 @Component({
-  selector: 'app-empleado-add',
-  templateUrl: './empleado-add.component.html',
-  styleUrl: './empleado-add.component.css'
+    selector: 'app-empleado-add',
+    templateUrl: './empleado-add.component.html',
+    styleUrl: './empleado-add.component.css',
+    standalone: false
 })
 export class EmpleadoAddComponent implements OnInit {
 

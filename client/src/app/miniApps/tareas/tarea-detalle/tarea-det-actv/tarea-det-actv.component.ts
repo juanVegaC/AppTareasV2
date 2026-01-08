@@ -5,9 +5,10 @@ import { ActvPorAsigGetRes } from '../../../../_models/Actividad/ActvPorAsigGet/
 import { ActvPorAsigGetReq } from '../../../../_models/Actividad/ActvPorAsigGet/ActvPorAsigGetReq';
 
 @Component({
-  selector: 'app-tarea-det-actv',
-  templateUrl: './tarea-det-actv.component.html',
-  styleUrl: './tarea-det-actv.component.css'
+    selector: 'app-tarea-det-actv',
+    templateUrl: './tarea-det-actv.component.html',
+    styleUrl: './tarea-det-actv.component.css',
+    standalone: false
 })
 export class TareaDetActvComponent {
 

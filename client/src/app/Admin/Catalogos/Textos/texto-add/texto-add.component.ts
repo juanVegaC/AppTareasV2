@@ -5,9 +5,10 @@ import { appMessage } from '../../../../_models/appMessage';
 import { AppMsg } from '../../../../_models/Messages/AppMsg';
 
 @Component({
-  selector: 'app-texto-add',
-  templateUrl: './texto-add.component.html',
-  styleUrl: './texto-add.component.css'
+    selector: 'app-texto-add',
+    templateUrl: './texto-add.component.html',
+    styleUrl: './texto-add.component.css',
+    standalone: false
 })
 export class TextoAddComponent {
 

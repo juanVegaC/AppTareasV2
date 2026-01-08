@@ -8,9 +8,10 @@ import { TextoCreateReq } from '../../../../_models/Textos/TextoCreate/TextoCrea
 import { TextoEditReq } from '../../../../_models/Textos/TextoEdit/TextoEditReq';
 
 @Component({
-  selector: 'app-lista-textos',
-  templateUrl: './lista-textos.component.html',
-  styleUrl: './lista-textos.component.css'
+    selector: 'app-lista-textos',
+    templateUrl: './lista-textos.component.html',
+    styleUrl: './lista-textos.component.css',
+    standalone: false
 })
 export class ListaTextosComponent implements AfterViewInit {
 

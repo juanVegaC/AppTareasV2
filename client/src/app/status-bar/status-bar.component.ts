@@ -3,9 +3,10 @@ import { appMessage } from '../_models/appMessage';
 import { MessageService } from '../_services/message.service';
 
 @Component({
-  selector: 'app-status-bar',
-  templateUrl: './status-bar.component.html',
-  styleUrl: './status-bar.component.css'
+    selector: 'app-status-bar',
+    templateUrl: './status-bar.component.html',
+    styleUrl: './status-bar.component.css',
+    standalone: false
 })
 export class StatusBarComponent {
 

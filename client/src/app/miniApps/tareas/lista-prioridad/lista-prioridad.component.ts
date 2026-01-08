@@ -14,9 +14,10 @@ import { AsignacionesService } from '../../../_services/asignaciones.service';
 import { SListaPrioridadesViewConfig } from '../../../_views/config/SListaPrioridadesViewConfig';
 
 @Component({
-  selector: 'app-lista-prioridad',
-  templateUrl: './lista-prioridad.component.html',
-  styleUrl: './lista-prioridad.component.css'
+    selector: 'app-lista-prioridad',
+    templateUrl: './lista-prioridad.component.html',
+    styleUrl: './lista-prioridad.component.css',
+    standalone: false
 })
 export class ListaPrioridadComponent implements OnChanges, AfterViewInit{
 

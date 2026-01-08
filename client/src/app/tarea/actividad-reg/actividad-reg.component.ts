@@ -16,9 +16,10 @@ import { PuestoService } from '../../_services/puesto.service';
 import { PuestosGetParams } from '../../_models/Puesto/PuestosGetParams';
 
 @Component({
-  selector: 'app-actividad-reg',
-  templateUrl: './actividad-reg.component.html',
-  styleUrl: './actividad-reg.component.css'
+    selector: 'app-actividad-reg',
+    templateUrl: './actividad-reg.component.html',
+    styleUrl: './actividad-reg.component.css',
+    standalone: false
 })
 export class ActividadRegComponent implements OnInit{
 
