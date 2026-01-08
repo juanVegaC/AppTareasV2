@@ -3,7 +3,7 @@
     @if (accountService.isLoged()) {
       <ui5-avatar slot="profile" size="XS" [initials]="accountService.getUserInitial()"></ui5-avatar>
     }
-    <img src="./assets/images/biopappel-logo.png" slot="logo" title="App Tareas" (click)="handleGoHome()">
+    <img src="./assets/images/appTareas_small.png" slot="logo" title="App Tareas" (click)="handleGoHome()">
     <ui5-shellbar-item icon="palette" text="Temas" ref="themeChangeItem" (click)="handleThemeSettingsToggle($event)"></ui5-shellbar-item>
     @if (accountService.isLoged()) {
       <ui5-shellbar-item icon="log" (click)="handleLogOut()"></ui5-shellbar-item>
